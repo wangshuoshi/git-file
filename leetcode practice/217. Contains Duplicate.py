@@ -31,3 +31,15 @@ class Solution(object):
         :rtype: bool
         """
         return len(nums) != len(set(nums))
+
+"""利用列表自带的方法"""
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        for i in nums:
+            if nums.count(i) >= 2:
+                return True
+        return False
