@@ -1,0 +1,29 @@
+#mock  #模拟mock封装 mock模拟的是一个方法
+from mock import mock
+def mock_test(mock_method,request_data,url,method,response_data):
+    #mock_method是一个 send_get或者post的方法,所以下面必须把模拟的值传给他
+  	mock_method = mock.Mock(return_value=response_data)
+	  res = mock_method(url,method,request_data)
+	  return res
+    
+# requests 方法，下面的函数可以替换成post或者get
+import requests
+def send_post(self,url,data):
+		res = requests.post(url=url,data=data).json()
+		return res
+
+r = requests.post("http://m.ctrip.com/post")
+payload = {'some': 'data'}
+r = requests.post(url, data=json.dumps(payload)) #如果传递的payload是string而不是dict，需要先调用dumps方法格式化一下
+print r.content #以字节的方式去显示，中文显示为字符
+print r.text #以文本的方式去显示
+print r.json() #获取json,需要先import json
+print r.cookies #获取cookies
+
+    
+#jsonpath_rw 对json操作的一个模块
+from jsonpath_rw import jsonpath,parse#获取特定的值
+>>>json_obj = {"student":[{"male":176,"female":162},{"male":174,"female":159}]}
+>>>jsonpath_expr = parse("student[*].male")#放入查找的范围
+>>>male = jsonpath_expr.find(json_obj)#只要包含我们要查找的东西就找出来
+>>>[match.value for match in male]
