@@ -2,15 +2,15 @@
 from mock import mock
 def mock_test(mock_method,request_data,url,method,response_data):
     #mock_method是一个 send_get或者post的方法,所以下面必须把模拟的值传给他
-  	mock_method = mock.Mock(return_value=response_data)
-	  res = mock_method(url,method,request_data)
-	  return res
+    mock_method = mock.Mock(return_value=response_data)
+    res = mock_method(url,method,request_data)
+    return res
     
 # requests 方法，下面的函数可以替换成post或者get
 import requests
 def send_post(self,url,data):
-		res = requests.post(url=url,data=data).json()
-		return res
+    res = requests.post(url=url,data=data).json()
+    return res
 
 r = requests.post("http://m.ctrip.com/post")
 payload = {'some': 'data'}
