@@ -43,3 +43,7 @@ if args.square:
     print(args.square ** 2)
 if args.cubic:     #可以既输入square又输入cubic
     print(args.cubic ** 3)
+
+
+json是可以在不同语言之间交换数据的，而pickle只在python之间使用。
+json只能序列化最基本的数据类型，而pickle可以序列化所有的数据类型，包括类，函数都可以序列化。
