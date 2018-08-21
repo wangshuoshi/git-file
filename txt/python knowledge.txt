@@ -1,0 +1,21 @@
+a=2
+b=a
+print id(a),id(b) #46751984 46751984
+a=3
+print b,id(a) #2 46751960
+
+c=[1]
+d=c
+print id(d),id(c) #49133256 49133256
+c.append(2)
+print d#[1, 2]
+
+import copy
+e=[3,4,["aaa","bbb"]]
+f=copy.copy(e)
+g=copy.deepcopy(e)
+print id(e),id(f) # 49134152 49150984
+e.append(5)
+e[2].append("ccc")
+print f#[3, 4, ['aaa', 'bbb', 'ccc']]
+print g#[3, 4, ['aaa', 'bbb']]
