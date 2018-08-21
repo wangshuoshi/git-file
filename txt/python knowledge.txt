@@ -1,3 +1,17 @@
+new方法 会执行
+class Dog(object):
+    __instance = None
+    __init_flag = False
+
+    def __new__(cls, name):
+        if cls.__instance == None:
+            cls.__instance = object.__new__(cls)
+            return cls.__instance
+        else:
+            #返回上一次创建的对象的引用
+            return cls.__instance
+
+深浅拷贝和赋值
 a=2
 b=a
 print id(a),id(b) #46751984 46751984
@@ -20,15 +34,15 @@ e[2].append("ccc")
 print f#[3, 4, ['aaa', 'bbb', 'ccc']]
 print g#[3, 4, ['aaa', 'bbb']]
 
-
+sbuprocess模块
 import subprocess
 a=subprocess.check_output("ls")
 b=subprocess.call("ifconfig")   #正确执行返回0，没有正确执行就报错
 print a
 print b
 
+在外面输入参数
 import argparse
-
 parser = argparse.ArgumentParser()
 parser.add_argument('integer', type=int, help='display an integer')
 args = parser.parse_args()
