@@ -1,0 +1,80 @@
+CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci
+自增
+auto_increment
+primary key
+触发器
+触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的
+删除触发器DROP TRIGGER tri_after_insert_tb1;
+delimiter //
+CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW
+BEGIN
+
+IF NEW. NAME == 'alex' THEN
+    INSERT INTO tb2 (NAME)
+VALUES
+    ('aa')
+END
+END//
+delimiter ;
+
+存储过程 没有返回值但可以有sql语句  函数有返回值,但不能写sql语句
+-- 创建存储过程  @用于out和inout
+delimiter \\
+create procedure p1(
+    in i1 int,
+    in i2 int,
+    inout i3 int,
+    out r1 int
+)
+BEGIN
+    DECLARE temp1 int;
+    DECLARE temp2 int default 0;   
+    set temp1 = 1;
+    set r1 = i1 + i2 + temp1 + temp2;   
+    set i3 = i3 + 100;
+end\\
+delimiter ;
+-- 执行存储过程
+set @t1 =4;
+set @t2 = 0;
+CALL p1 (1, 2 ,@t1, @t2);
+SELECT @t1,@t2;
+
+pymsql执行sql存储
+import pymysql
+conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123', db='t1')
+cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+# 执行存储过程
+cursor.callproc('p1', args=(1, 22, 3, 4))
+# 获取执行完存储的参数
+cursor.execute("select @_p1_0,@_p1_1,@_p1_2,@_p1_3")
+result = cursor.fetchall()
+conn.commit()            #有增删的时候一定要执行这句话
+cursor.close()
+conn.close()
+print(result)
+
+函数
+delimiter \\
+create function f1(
+    i1 int,
+    i2 int)
+returns int          #需要returns 类型
+BEGIN
+    declare num int;
+    set num = i1 + i2;
+    return(num);
+END \\
+delimiter ;
+
+索引
+create unique index 索引名 on 表名(列名)
+
+视图
+CREATE VIEW v1 AS 
+SELET nid, 
+    name
+FROM
+    A
+WHERE
+    nid > 4
