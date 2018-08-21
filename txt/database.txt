@@ -11,7 +11,6 @@ select * from table1 where name like ‘%[!0-9]%’
 delimiter //
 CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW
 BEGIN
-
 IF NEW. NAME == 'alex' THEN
     INSERT INTO tb2 (NAME)
 VALUES
