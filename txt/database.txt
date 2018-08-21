@@ -2,6 +2,9 @@ CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci
 自增
 auto_increment
 primary key
+分页 limit
+like查询
+select * from table1 where name like ‘%[!0-9]%’
 触发器
 触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的
 删除触发器DROP TRIGGER tri_after_insert_tb1;
@@ -78,3 +81,9 @@ FROM
     A
 WHERE
     nid > 4
+
+F查询
+from django.db.models import F
+a.objects.filter(aa__gt=F('bb'))
+Q查询
+a.objects.filter((Q(name__startwith='张'),Q(id__gt=4))|Q(price__gt=10000))
