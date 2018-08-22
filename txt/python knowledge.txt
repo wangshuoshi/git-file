@@ -1,6 +1,7 @@
 须知：只有TCP有粘包现象，UDP永远不会粘包
 发送数据时间间隔很短，数据了很小，会合到一起，产生粘包
-
+range返回一个列表，xrange是生成一个生成器对象，python已经取消xrange
+yml - 是列表
 new方法 会执行
 class Dog(object):
     __instance = None
