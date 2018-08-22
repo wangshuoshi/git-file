@@ -2,6 +2,13 @@ update用来更新软件列表，upgrade用来更新软件。
 Sudo apt-get update 
 Pip
 安装Pip install package     升级pip install   -u package
+Wget
+是一个从网络上自动下载文件的自由工具。它支持HTTP，HTTPS和FTP协议，可以使用HTTP代理. 
+下载整个http或者ftp站点。wget http://place.your.url/here
+当文件特别大或者网络特别慢的时候，往往一个文件还没有下载完，连接就已经被切断，此时就需要断点续传。wget的断点续传是自动的，只需要使用-c参数，例如：
+wget -c http://the.url.of/incomplete/file
+如果有多个文件需要下载，那么可以生成一个文件，把每个文件的URL写一行，例如生成文件download.txt，然后用命令：wget -i download.txt
+
 
 直接从物理内存读写数据要比从硬盘读写数据要快的多因此，我们希望所有数据的读取和写入都在内存完成，而内存是有限的，
 这样就引出了物理内存与虚拟内存的概念。
