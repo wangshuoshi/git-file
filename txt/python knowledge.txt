@@ -101,3 +101,19 @@ if args.cubic:     #可以既输入square又输入cubic
 
 json是可以在不同语言之间交换数据的，而pickle只在python之间使用。
 json只能序列化最基本的数据类型，而pickle可以序列化所有的数据类型，包括类，函数都可以序列化。
+
+fromkeys
+seq = ('Google', 'Runoob', 'Taobao')
+dict = dict.fromkeys(seq)
+print "新字典为 : %s" %  str(dict)
+dict = dict.fromkeys(seq, 10)
+print "新字典为 : %s" %  str(dict)
+
+去重
+l1 = ['b','c','d','b','c','a','a']
+l2 = {}.fromkeys(l1).keys()
+print l2
+
+HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。
+HTTP 1.1支持持久连接，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。
+HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。
