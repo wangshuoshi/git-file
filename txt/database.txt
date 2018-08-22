@@ -86,3 +86,7 @@ from django.db.models import F
 a.objects.filter(aa__gt=F('bb'))
 Q查询
 a.objects.filter((Q(name__startwith='张'),Q(id__gt=4))|Q(price__gt=10000))
+
+数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行
+
+采用B tree来进行索引
