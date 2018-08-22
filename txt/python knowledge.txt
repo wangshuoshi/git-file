@@ -15,6 +15,25 @@ Python中的垃圾回收是以引用计数为主，分代收集为辅。引用�
 产生死锁的条件：
 资源独占排他使用/不可剥夺的条件（在未使用完毕之前不会被剥夺）/在申请新资源的时候同时占用原来的资源/等待（p2等p1的资源，p3等p2的资源）
 
+read是读取整个文件，readline如果加上数字就变成了读取多少个字节，readlines是会生成一个迭代器需要用for循环来做
+
+select 连接数量受限，查找速度慢，数据由内核拷贝到用户态   poll改善了第一个，epoll改善了三个
+其中epoll LT可以理解为水平触发，只要有数据可以读，不管怎样都会通知。而ET为边缘触发，只有状态发生变化时才会通知，可以理解为电平变
+
+调度算法
+先来先服务/短作业优先/最高优先权调度/
+时间片轮转（sched模块，
+def perform_command(cmd, inc):         
+#    os.system(cmd)  
+    print(time.time())  
+    print('zhixing写入数据库',time.time() -tt)    
+    global tt  
+    tt=time.time()           
+def timming_exe(cmd, inc = 60):         
+    # enter用来安排某事件的发生时间，从现在起第n秒开始启动        
+    schedule.enter(inc, 0, perform_command, (cmd, inc))          一个enter再用一个run方法      
+    #  # 持续运行，直到计划时间队列变成空为止         
+    schedule.run()  ）
 
 new方法 会执行
 class Dog(object):
@@ -36,11 +55,14 @@ print id(a),id(b) #46751984 46751984
 a=3
 print b,id(a) #2 46751960
 
+a=2
+b=2    #这时候id也是一样的
+
 c=[1]
 d=c
-print id(d),id(c) #49133256 49133256
+print id(d),id(c) #49133256 49133256     
 c.append(2)
-print d#[1, 2]
+print d#[1, 2]         数值类型（int和float）、字符串str、元组tuple都是不可变类型。而列表list、字典dict、集合set是可变类型
 
 import copy
 e=[3,4,["aaa","bbb"]]
