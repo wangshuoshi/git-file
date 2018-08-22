@@ -33,8 +33,9 @@ DHCP有三种机制分配IP地址：
 """
 
 """
+cd /etc/network/interfaces
 auto eth0
-iface eth0 inet dhcp  》》/etc/network/interfaces，并使用sudo dhclient eth0
+iface eth0 inet dhcp  #并使用sudo dhclient eth0来启动
 """
 
 #防火墙
