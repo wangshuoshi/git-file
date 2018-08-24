@@ -1,0 +1,26 @@
+https://www.cnblogs.com/f-ck-need-u/p/7231832.html
+https://blog.csdn.net/miaoxing4/article/details/81137991
+
+1 echo "666" >> abc.log       >> 代表不覆盖前文的输入    echo也可以直接打印 echo "1"
+2 cat >> abc.log << EOF       也会接着上文继续输入  EOF是结束位
+> 999
+> EOF
+
+cp -pdr /tmp/abc.txt  ~/                         -pdr 会带着源文件的属性一起复制过去
+find ~/ -type f -name "abc.*" -exec rm {} \;     -type f是文件 d是目录 -mtime   最好加上路径,否则是在/下找
+                                                 -exec 加上要执行的内容，{}代表的就是前面查找的文件，必须要又有 \;
+
+cp `find -type f -name "abc.*"` ~/               ``里面的内容会首先执行
+grep -v "aaa" test.sh     -v 不包括aaa的行   -A
+head/tail -8 test.sh       前/后8行，默认是10行
+mkdir -p /tmp/a       -p 连续创建
+seq 100 >> a.sh       1-100放入文件里面
+
+sed -n "2,5p" test.sh     没有-n不会生效,p是打印的意思，2-5行
+sed -i "s#oldgirl#xiuzhi#g" test.sh     替换 -i是修改文本内容 sg和#必备
+sed -i "s#oldgirl#xiuzhi#g" `find ./ -type f -name "tes*"`   先去执行``里面的内容，然后再从头开始运行
+find ./ -type f -name "*.sh" | xargs sed -i "s#xiuzhi#oldgirl#g"   xargs把查找到的内容（文件）变为一串
+
+head -5 test.sh |tail -4  也可以是这样   |的意思是把前面的流入后面继续执行
+awk "NR>1&&NR<6" test.sh  NR是行的意思 因为没有加print，所以可以是双引号“”
+awk -F ":" '{print $1}' test.sh    有print的时候一定是'print{$1}'单引号
