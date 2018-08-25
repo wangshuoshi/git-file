@@ -8,7 +8,7 @@ https://blog.csdn.net/miaoxing4/article/details/81137991
 
 cp -pdr /tmp/abc.txt  ~/                         -pdr 会带着源文件的属性一起复制过去
 find ~/ -type f -name "abc.*" -exec rm {} \;     -type f是文件 d是目录 -mtime   最好加上路径,否则是在/下找
-                                                 -exec 加上要执行的内容，{}代表的就是前面查找的文件，必须要又有 \;
+find ~/ -type f -name "abc.*" |xargs rm -f       -exec 加上要执行的内容，{}代表的就是前面查找的文件，必须要又有 \;
 
 cp `find -type f -name "abc.*"` ~/               ``里面的内容会首先执行
 grep -v "aaa" test.sh     -v 不包括aaa的行   -A
