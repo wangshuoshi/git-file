@@ -19,8 +19,9 @@ seq 100 >> a.sh       1-100放入文件里面
 
 sed -n "2,5p" test.sh     没有-n不会生效,p是打印的意思，2-5行
 sed -i "s#oldgirl#xiuzhi#g" test.sh     替换 -i是修改文本内容 sg和#必备
-sed -i "/oldboy/d" test.sh   从文本删除oldboy这一行
+sed -i "/oldboy/d" test.sh   从文本删除oldboy这一行    d是删除命令
 sed -e "/oldboy/d" test.sh   从输出删除oldboy这一行
+sed -n "/oldboy/p" test.sh   查找   -n和p同时出现
 sed -i "s#oldgirl#xiuzhi#g" `find ./ -type f -name "tes*"`   先去执行``里面的内容，然后再从头开始运行
 find ./ -type f -name "*.sh" | xargs sed -i "s#xiuzhi#oldgirl#g"   xargs把查找到的内容（文件）变为一串
 
