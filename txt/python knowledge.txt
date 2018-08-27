@@ -76,7 +76,7 @@ c=[1]
 d=c
 print id(d),id(c) #49133256 49133256     
 c.append(2)
-print d#[1, 2]         数值类型（int和float）、字符串str、元组tuple都是不可变类型。而列表list、字典dict、集合set是可变类型
+print d#[1, 2]         数值类型（int和float）、字符串str、元组tuple都是不可变类型。而列表list、字典dict是可变类型
 
 import copy
 e=[3,4,["aaa","bbb"]]
