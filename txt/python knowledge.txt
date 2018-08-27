@@ -6,7 +6,7 @@ yml - 是列表
 a.sort()     是在原列表上进行排序，没有返回值！！！而且只能是对列表排序！
 b=sorted(a)  sorted生成一个新的列表！不管是什么，都生成一个列表，有返回值，可以对所有可迭代对象！
 a.reverse()  是在原列表上进行修改，没有返回值！！！也是只能对列表排序！
-b=list(reversed(a))  reversed生成新的列表，必须前面加上list(),加str()没有用！！！
+b=list(reversed(a))  reversed生成新的列表，必须前面加上list(),加str()没有用！！！也就是说生成一个可迭代对象，可用for
 
 字符串转为列表可以用list(str),也可以用str.split()  字符串  str.find("a")   str.index("a")(会报异常) 
 列表转为字符串用" ".join(list)                           str.count("a")   "+".join(str)会以每个字母分开
@@ -16,6 +16,22 @@ b=list(reversed(a))  reversed生成新的列表，必须前面加上list(),加st
 列表  
 list.extend()无返回值,一次性增加一个列表
 list.remove()无返回值,原列表修改
+
+字典
+dict = {'Name':'Runoob','Age':7}
+dict2 = {'Sex':'female'} 
+dict.update(dict2)        更新字典
+
+fromkeys
+seq = ('Google', 'Runoob', 'Taobao')
+dict = dict.fromkeys(seq)
+print "新字典为 : %s" %  str(dict)
+dict = dict.fromkeys(seq, 10)
+print "新字典为 : %s" %  str(dict)
+
+dict.get('Sex', "NA")  可取值也可以赋值
+dict.items()遍历所有键值对 生成一个遍历对象
+a.values()和a.keys()会生成一个遍历对象，for来便利,如果不用for,要用list
 
 垃圾回收机制   还有一个__del__方法，会在计数为0的时候进行调用
 Python中的垃圾回收是以引用计数为主，分代收集为辅。引用计数的缺陷是循环引用的问题。
@@ -116,18 +132,13 @@ if args.cubic:     #可以既输入square又输入cubic
 json是可以在不同语言之间交换数据的，而pickle只在python之间使用。
 json只能序列化最基本的数据类型，而pickle可以序列化所有的数据类型，包括类，函数都可以序列化。
 
-fromkeys
-seq = ('Google', 'Runoob', 'Taobao')
-dict = dict.fromkeys(seq)
-print "新字典为 : %s" %  str(dict)
-dict = dict.fromkeys(seq, 10)
-print "新字典为 : %s" %  str(dict)
-
 去重
 l1 = ['b','c','d','b','c','a','a']
 l2 = {}.fromkeys(l1).keys()
 print l2
 
-HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。
+HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，
+服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。
 HTTP 1.1支持持久连接，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。
-HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。
+HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端
+请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。
