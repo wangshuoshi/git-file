@@ -24,7 +24,16 @@ sed -e "/oldboy/d" test.sh   从输出删除oldboy这一行
 sed -n "/oldboy/p" test.sh   查找   -n和p同时出现
 sed -i "s#oldgirl#xiuzhi#g" `find ./ -type f -name "tes*"`   先去执行``里面的内容，然后再从头开始运行
 find ./ -type f -name "*.sh" | xargs sed -i "s#xiuzhi#oldgirl#g"   xargs把查找到的内容（文件）变为一串
+sed -e "/oldboy$/d" a.txt  sed也支持正则表达式
+sed -n "/oldboy$/p" a.txt  np是联合使用的
+sed -nr "s#(^a*):b.*(A.*)#\1 \2#gp" a.txt  -r是正则表达式
+
+grep -E "^oldboy" a.txt 加上E便可以变成是正则表达式
+egrep "^oldboy" a.txt   如果不加E的话就要变成egrep
+grep "a\{2,3\}" a.txt 或者是 grep -E "a{2,3}" a.txt
+
 
 head -5 test.sh |tail -4  也可以是这样   |的意思是把前面的流入后面继续执行
 awk "NR>1&&NR<6" test.sh  NR是行的意思 因为没有加print，所以可以是双引号“”
 awk -F ":" '{print $1}' test.sh    有print的时候一定是'print{$1}'单引号
+awk -F ":" 'NR ==3 {print $2}' infrasim.ym
