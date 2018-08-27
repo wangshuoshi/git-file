@@ -14,7 +14,7 @@ b=list(reversed(a))  reversed生成新的列表，必须前面加上list(),加st
                                                         str.replace("is", "was", 3) is替换为was,替换3次数,生成新的,不是在源字符串修改
 
 列表  
-list.extend()无返回值,一次性增加一个列表
+list.extend()无返回值,一次性增加一个列表  list.append("a") 添加一个
 list.remove()无返回值,原列表修改
 
 字典
@@ -32,6 +32,11 @@ print "新字典为 : %s" %  str(dict)
 dict.get('Sex', "NA")  可取值也可以赋值
 dict.items()遍历所有键值对 生成一个遍历对象
 a.values()和a.keys()会生成一个遍历对象，for来便利,如果不用for,要用list
+dict.pop("key")
+
+集合
+a.add()和a.update()
+a.remove()
 
 垃圾回收机制   还有一个__del__方法，会在计数为0的时候进行调用
 Python中的垃圾回收是以引用计数为主，分代收集为辅。引用计数的缺陷是循环引用的问题。
