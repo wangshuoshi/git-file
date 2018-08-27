@@ -31,7 +31,7 @@ sed -nr "s#(^a*):b.*(A.*)#\1 \2#gp" a.txt  -r是正则表达式
 grep -E "^oldboy" a.txt 加上E便可以变成是正则表达式
 egrep "^oldboy" a.txt   如果不加E的话就要变成egrep
 grep "a\{2,3\}" a.txt 或者是 grep -E "a{2,3}" a.txt
-
+grep -En "^a" a.txt  -n显示行号
 
 head -5 test.sh |tail -4  也可以是这样   |的意思是把前面的流入后面继续执行
 awk "NR>1&&NR<6" test.sh  NR是行的意思 因为没有加print，所以可以是双引号“”
