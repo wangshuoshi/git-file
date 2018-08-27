@@ -8,8 +8,11 @@ b=sorted(a)  sorted生成一个新的列表！不管是什么，都生成一个�
 a.reverse()  是在原列表上进行修改，没有返回值！！！也是只能对列表排序！
 b=list(reversed(a))  reversed生成新的列表，必须前面加上list(),加str()没有用！！！
 
-字符串转为列表可以用list(str),也可以用str.split()
-列表转为字符串用" ".join(str)
+字符串转为列表可以用list(str),也可以用str.split()  字符串  str.find("a")   str.index("a")(会报异常) 
+列表转为字符串用" ".join(list)                           str.count("a")   "+".join(str)会以每个字母分开
+                                                        str.strip('*'),左右删除* 生成一个新的，不是在源字符串修改
+                                                        str.replace("is", "was", 3) is替换为was,替换3次数,生成新的,不是在源字符串修改
+
 
 垃圾回收机制   还有一个__del__方法，会在计数为0的时候进行调用
 Python中的垃圾回收是以引用计数为主，分代收集为辅。引用计数的缺陷是循环引用的问题。
