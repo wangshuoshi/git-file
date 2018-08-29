@@ -1,0 +1,390 @@
+import os
+from selenium import webdriver
+import selenium
+from selenium.webdriver.common.action_chains import ActionChains
+#上面的是鼠标点击的类
+from selenium.webdriver.common.keys import Keys
+#上面是键盘的操作
+from selenium.webdriver.support.ui import WebDriverWait
+#上面是等待
+from selenium.webdriver.support import expected_conditions as EC
+import time
+
+b = webdriver.Edge()
+b.get(url='http://www.baidu.com')
+title =b.title#查看title
+a='百度' in b.title#查看是否正确打开网页，用title来查看
+#a=b.current_url
+#a='baidu' in b.current_url#
+#把drive加载到环境变量里面
+#如果返回再重新定位，则元素的id会变化
+#用的是2.48.2
+ele = b.find_element_by_id('kw')#定位元素
+ele1 = b.find_element_by_name('wd')
+ele2 = b.find_element_by_class_name('s_ipt')
+ele3 = b.find_element_by_tag_name('input')#不是很好，因为很多同样标签时出错
+b.maximize_window()#全屏
+ele4 = b.find_element_by_link_text('企业直通班')#通过字符串定位相关的元素
+ele41 = b.find_element_by_partial_link_text('直通班')#模糊定位，和上面类似
+ele5 = b.find_element_by_css_selector(r'input[id=\'search\']')
+ele51 = b.find_element_by_css_selector("#kw")#井号代表id，点代表class
+ele52 = b.find_element_by_css_selector('[name=wd]')
+ele53 = b.find_element_by_css_selector('span.bg > input#kw')#>左边的是父目录
+#这里输入的是tag，tag是个字典，也可以用审查元素来查看，然后复制过来
+#id是唯一的
+
+a = ele4.click()#点击
+print(id(ele))
+print(type(ele))
+ele.send_keys('maizixueyuan')#输入
+#ele.clear()#清空
+b.back()#返回
+
+#html、body、input都是节点，就是我们所说的tag，子节点就相当于是一个元素
+ele_xpath0 = b.find_element_by_xpath('/html')#根节点
+ele_xpath1 = b.find_element_by_xpath('/html/body/form/input[1]')#不输入默认是从第一个开始查找。列表也是从1开始的
+a=ele_xpath1.text#能得到下面的文本的东西
+a1 = a.encode('gbk','ignore').
+k=ele_xpath1.get_attribute('type')#看它的属性值是什么，也可以send_keys
+xialakuang = ele_xpath1.is_displayed()#尤其是下拉框，判断返回的结果是否显示出来的
+ele_xpath2 = b.find_element_by_xpath('//input[n]')#全局搜索，不确定是在那个层级下面，用//
+#还可以用.来代表父节点
+ele_xpath3 = b.find_element_by_xpath('//input[@id]')
+#也可以是[not（@id）]
+ele_xpath4 = b.find_element_by_xpath('//input[@name="afsdfa"]')
+ele_xpath41 = b.find_elements_by_xpath('//input[@name="afsdfa"]')[1]#第一个
+ele_xpath5 = b.find_element_by_xpath('//*[count(input)=2]')#定位input个数为2的
+a=ele_xpath5.tag_name#看标签
+ele_xpath6 = b.find_element_by_xpath('//*[local-name()="xxx"]')#不知道在哪个层级下用*，名为xxx的元素
+ele_xpath7 = b.find_element_by_xpath('//*[start-with(local-name(),"i"][last()]')#定位i开头的元素
+ele_xpath8 = b.find_element_by_xpath('//*[contains(local-name(),"i")]')
+ele_xpath9 = b.find_element_by_xpath('//*[string-length(local-name())=5]')#必须这样写，因为是单独的，而不是一组元素
+ele_xpath10 = b.find_element_by_xpath("//span[@span='bg']/input")#可以嵌套
+
+#调整浏览器页面大小
+b.set_window_size(480, 800)#模拟手机页面
+b.maximize_window()#全屏
+b.forward()#浏览器前进
+b.refresh()#刷新
+ele_asd = b.find_element_by_id('kw').clear()
+ele_asd1 = b.find_element_by_id('kw').send_keys('你好')
+ele_asd2 = b.find_element_by_id('loginbtn').click()#按钮、链接
+ele_asd3 = b.find_element_by_id('loginbtn').submit()#只能对form表单进行提交
+
+b.quit()#关闭浏览器
+#gbk 扩展,繁体中文
+#gb2313 中文编码
+#utf-8 标准编码
+
+ele_asd4 = b.find_element_by_id("kw")
+ActionChains(b).move_to_element(ele_asd4).perform()#鼠标移动悬停
+ActionChains(b).context_click(ele_asd4).perform()#鼠标点击
+            #    double_click()#双击
+x = b.find_element_by_link_text('xx')
+y = b.find_element_by_link_text('xx')
+ActionChains(b).drag_and_drop(x,y).perform()#拖动,有起始点
+
+#键盘
+b.find_element_by_id('kw').send_keys(Keys.SPACE)#空格
+b.find_element_by_id('kw').send_keys(Keys.ENTER)
+b.find_element_by_id('kw').send_keys('教程')
+b.find_element_by_id('kw').send_keys(Keys.CONTROL,'x')#也可以是a、v，模拟键盘的ctrl+a
+
+#显式等待，针对某个元素
+#隐式等待，针对当前页面当中的所有元素等待
+a12 = WebDriverWait(b, 5, 1).until(EC.presence_of_element_located(By.ID,"KW"))
+#针对某个元素的等待，等待5秒，每隔1秒检查一次，直到后面的方法为true
+b.implicitly_wait(10)#隐式等待，所有元素一共等待十秒,在开头设置
+
+for i in range(10):
+    try:
+        e1 = b.find_element_by_id("kw")
+        if e1.is_displayed():
+            break
+    except: pass
+    time.sleep(1)
+else:
+    print("time out")
+
+#如果定位一组元素，则需要是elements，需要加上s
+#复选框的 type="checkbox"
+inputs = b.find_elements_by_tag_name('input')
+for i in inputs:
+    if i.get_attribute('type') == 'checkbox':
+        i.click()
+    time.sleep(1)
+#或者是
+inputs = b.find_elements_by_xpath('//input[@type="checkbox"]')
+
+#嵌套的框
+xp = b.find_element_by_xpath('//infram[@id=if]')#先定为，然后是下一步切换
+b.switch_to.frame('xp')#切换
+#当然还可以是
+b.switch_to.frame('if')#可以省略第一步，然后直接写id
+b.switch_to.default_content()#退出到表单的最外层
+b.switch_to.parent_frame()#返回上一层
+
+#多窗口
+
+sreach_windows = b.current_window_handle#获得当前窗口的句柄
+
+b.find_element_by_link_text(u'登陆').click()
+b.find_element_by_link_text(u'立即注册').click()
+
+all_handles = b.window_handles#获得所有的句柄
+#只是两个页面
+for handle in all_handles:
+    if  handle == sreach_windows:
+        b.switch_to.window(handle)
+
+#警告框,不能用元素去定位.隐式在没有显示之前元素是灰的
+b.switch_to.alert().accept()#接收
+
+#上传
+b.find_element_by_name('file').send_keys('d:\\aasdfa')#直接传值
+
+
+#AutoIt
+#先打开autoit window info 然后拖动风扇到上传框,定位需要的项目
+#然后打开scite stript进行编辑,用的是vb语言
+#ControlFocus("选择要加载的文件","","edit1") 弹窗的标题,edit1是在autoit中control里面的classnameNN
+#WinWait("[CLASS:#33770]","",10)#判断选择的窗口有没有出现
+#ControlSetText("选择要加载的文件","","edit","D:\ASDF")#必须是单斜线
+#ControlClick("打开","","Button1")
+#然后保存再转化为exe格式
+#用python执行exe
+os.system("asd.exe")#选择那个exe文件就可以了
+
+#下载
+fp = webdriver.FirefoxProfile()
+fp.set_preference("", xx)#进行各项设置，保存路径
+drive = webdriver.Firefox(firefox_profile=fp)#传进去
+drive.get("http://asdfasdf")
+drive.find_element_by_link_text("asdfa").click()
+#cookie，但是不如session，session更加安全
+drive.get_cookies()#获取全部的cookie
+for cookie in drive.get_cookies():
+    print(cookie['name'],cookie['value'])
+
+drive.get_cookie('name')#获取特定
+drive.add_cookie({'asdf':'asdf',"asd":'poi'})#添加cookie，必须是字典
+drive.delete_cookie('name ')
+drive.delete_all_cookies()
+
+#js的调用
+js = 'document.documentElement.scrollTop=1000'#设置为最大的，拖到底部
+drive.execute_script(js)
+js = 'document.documentElement.scrollTop=0'#拖到顶部
+#还可以
+js = "window.scrollTo(100,100)"#左边的是水平方向，右边的是垂直方向，设置最大，为0就是最下和最右
+drive.execute_script(js)
+
+drive.get_screenshot_as_file("D:\\ASDFAS")#截图
+drive.close()#关闭当前页面
+drive.quit()#关闭浏览器
+
+#验证码。1、可以去掉，但是不好。2、用万能码（随机生成一个，然后和输入的对比）
+#3、验证码识别，用python——tesseract，但是不高
+import random
+num = random.randint(1,100)
+#xml
+from xml.dom.minidom import parse
+value=parse('info.xml')#打开
+root=value.documentElement#获取元素标签
+aa=root.getElementsByTagName('caption')[5]
+
+aa1=root.getElementsByTagName('login')[0]#获取username的属性值，这个必须指定
+print(aa1.getAttribute('username'))
+
+aa2=root.getElementsByTagName('maxid')[0]#指定位置
+print(aa2.firstChild.data)#获取两个标签对之间的文本信息
+
+#异常
+class ShortInputException(Exception):
+    '''自定义的异常类'''
+    def __init__(self, length, atleast):
+        #super().__init__()
+        self.length = length
+        self.atleast = atleast
+def main():
+    try:
+        s = "hello"
+        if len(s) < 3:
+            # raise引发一个自定义的异常
+            raise ShortInputException(len(s), 3)#相当于实例化了
+    except ShortInputException as result:#x这个变量被绑定到了错误的实例
+        print('ShortInputException: 输入的长度是 %d,长度至少应是 %d'% (result.length, result.atleast))
+    else:
+        print('没有异常发生.')
+
+assert condition#等价为下面的这样
+if not condition:
+    raise AssertionError()
+
+def test():
+    str = "hello"
+    try:
+        assert len(str) == 3, "不等于3"#如果assert为错，则e=“不等于3”
+    except AssertionError as e:
+        print("错误信息为：",e)
+
+#unnitest
+import unittest
+#里面一定要是
+class  Testxxx(unittest.TestCase):#必须继承这个类,以test开头
+    def setUp(self):#每条测试用例的开始
+        pass
+    def tearDown(self):#每条测试用例的结尾
+        pass
+
+    def testsss(self):#以test开头
+        self.assertEqual(a,b,c)#前面必须是self,c是自定义出现的信息
+
+    @unittest.skip      #可以跳过这条测试用例
+    @unittest.skipIf(3>2,"当条件成立时跳过")  #这个是选择判断
+    @unittest.skipUnless(3>2,"当条件成立时执行")#与上面一个相反
+    def testqqq(self):
+        self.assertNotEqual(a,b,c)
+
+#用法
+if __name__ == "__main__":
+    unittest.main()#如果就一条测试方法的话，也可以用下面的方法
+    # 默认的执行顺序是按照ascii码执行的a-z，A-Z
+    suit = unittest.TestSuite()#如果想指定顺序，则需要加载，会按照加载顺序来执行（不推荐）
+    suit.addTest(Testxxx('testsss'))
+    runner = unittest.TextTestRunner()
+    runner.run(suit)
+
+#测试同一个目录下的多个测试文件的时候
+test_dir = "./testcase"#文件的位置
+ddd = unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")#所有以test开头的文件
+#相当于把文件加载进去了，多级目录时，每个目录要变成一个python包，然后调用run方法
+runner = unittest.TextTestRunner()
+runner.run(ddd)
+
+#邮箱发送
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+smtpserver = "smtp.126.com"
+account = 'testingwtb@126.com'
+pwd = '123456'
+sender = 'testingwtb@126.com'#和前面的user一样
+receiver = 'fnngj@126.com'
+subject = 'python email test'
+msg = MIMEText('<html><h1>你好！</h1></html>', 'html', 'utf-8')
+msg['Subject'] = Header(subject, 'utf-8')
+
+smtp = smtplib.SMTP()
+smtp.connect(smtpserver)
+smtp.login(user=account,password=pwd)
+smtp.sendmail(sender,receiver,msg.as_string())
+smtp.quit()
+#发送附件
+sendfile = open('d:\\asdfasdf').read()
+att = MIMEText(sendfile, 'base64', 'utf-8')
+#获取最新的文件
+import os
+result_dir = "d:\\asdfasdfasdf"
+lists = os.listdir(result_dir)
+lists.sort(key=lambda, fn: os.path.getatime(result_dir+"\\"+fn))
+print("最新的文件为：",lists[-1])
+file = os.path.join(result_dir,lists[-1])
+
+#selenium grid   分布式，多个不同平台上
+#hub 主节点，node 分节点，可以有很多
+from selenium import webdriver
+browsers = ['firefox', 'chrome','internet explorer']
+for browser in browsers:#在源代码里面可以看到哪个浏览器是什么配置
+    dr = webdriver.Remote(command_executor='http://192.168.253.1:5555/wd/hub',
+                          desired_capabilities={
+                              "browserName":browser,
+                              "version":"",#浏览器版本号，可以为空
+                              "platform":"ANY",
+                              "javascriptEnabled":True,
+                              "marionette":False
+                          })
+#上面的是本机ip,用的是一个子节点
+    dr.get("https://www.baidu.com")
+    dr.find_element_by_id('kw').send_keys("bat")
+    dr.find_element_by_id('su').click()
+    dr.close()
+#java -jar selenium-server-asdf.jar -role node 主节点
+#在另外一台电脑跑程序，1另一台电脑也要有java环境和selenium server，2相互之间要ping通，3要有浏览器
+#在另一台电脑上输入以下命令
+#java -jar selenium-server-asdf.jar -role node -port 5555
+#-hub http://192.168.31.179:444/grid/register
+#上面的http是 被 谁控制，然后在上面的程序上换上虚拟机的浏览器和指定的地址和端口号
+#grid控制台http://127.0.0.1:4444/grid/console,可以看到有哪些节点
+#一定要关闭防火墙等之类的
+
+#自动化测试是一个用例开关一次，功能测试不一样
+
+#多线程
+
+#第一种
+import threading,time
+
+def music(func,loop):
+    for i in range(loop):
+        print("i was listening to %s"%func)
+        time.sleep(2)
+
+def move(func,loop):
+    for i in range(loop):
+        print("i was at %s"%func)
+
+threads = []
+t1 = threading.Thread(target=music, args=('123',2))
+t2 = threading.Thread(target=move, args=('asd',2))
+threads.append(t1)
+threads.append(t2)
+
+if __name__ == '__main__':
+    for t in threads:
+        t.start()
+    for t in threads:#守护线程
+        t.join()
+
+#第二种
+def super_player(func,loop):
+    for i in range(2):
+        print("start playing %s ,%s",%(func,loop))
+list_2 = {'asdf':3,'qerq':4}
+threads = []
+files = range(len(list_2))
+for k,v in list_2.items():
+    t = threading.Thread(target=super_player,args=(k,v) )
+    threads.append(t)
+
+if __name__ == '__main__':
+    for t in file:
+        threads[t].start()
+    for t in files:#守护线程
+        threads[t].join()
+
+#第三种!!!
+class MyThread(threading.Thread):
+    def __init__(self,func,args,name=''):
+        threading.Thread.__init__(self)
+        self.func = func
+        self.args = args
+        self.name = name
+    def run(self):
+        apply(self.func,self.args)
+
+def super_player(func, loop):
+    for i in range(2):
+        print("start playing %s ,%s", % (func, loop))
+
+list_2 = {'asdf': 3, 'qerq': 4}
+threads = []
+files = range(len(list_2))
+for k, v in list_2.items():
+    t = MyThread(super_player, (k,v), super_player.__name__)
+    threads.append(t)
+
+#htmlunit 模拟浏览器运行，运行速度快,但是离任意一款浏览器内核还是有区别
+    #{"browserName": "htmlunit}
+#phantomjs 模拟苹果浏览器，需要下载，可以看作是驱动，更稳定一些别上面一个
