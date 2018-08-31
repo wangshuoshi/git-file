@@ -1,6 +1,10 @@
 https://www.cnblogs.com/f-ck-need-u/p/7231832.html
 https://blog.csdn.net/miaoxing4/article/details/81137991
 
+modprobe 载入一个模块
+insmod 将给定的模块加载到内核中
+sync命令则可用来强制将内存缓冲区中的数据立即写入磁盘中
+
 1 echo "666" >> abc.log       >> 代表不覆盖前文的输入    echo也可以直接打印 echo "1"
 2 cat >> abc.log << EOF       也会接着上文继续输入  EOF是结束位
 > 999
