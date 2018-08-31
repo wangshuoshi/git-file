@@ -20,6 +20,10 @@ SQ位于Host内存中,Host要发送命令时,先把准备好的命令放在SQ中
 DB在SSD Controller端,是寄存器,DB记录着SQ和CQ的Head和Tail,每个SQ或者CQ有两个DB:Head DB 和 Tail DB
 Host只能写DB,不能读DB,Host通过SSD往CQ中写入的命令完成状态获取Head或者Tail.
 
+PCIe的Header空间和BAR空间是PCIe得以广泛使用的关键特性。Header空间是PCIe设备的通有属性，所有的PCIe Spec功能和规范都在这里实现；
+BAR空间则是设备差异化的具体体现，BAR空间的定义决定了这个设备是网卡，SSD还是虚拟设备。
+控制器controller把这段寄存器register 地址 映射 到了 bar 空间
+PCIe Header空间中有几个寄存器专门用来存储BAR空间地址
                                    **************  scsi ****************
 SCSI是一种计算机系统接口的标准
 SCSI是一种I/O技术
