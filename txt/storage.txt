@@ -1,4 +1,4 @@
-                                   **************  NVME ****************                                                
+                                  **************  NVME ****************                                                
 NVM Express（简称NVMe）是一个针对PCIe 接口的SSD的主机控制芯片  协议  标准
 NVMe设备（SSD）是由Controller，闪存和PCIe接口组成
 NVMe作为PCIe Endpoint，通过PCIE接口与CPU的Root Complex（RC）连接，传送内存数据
@@ -19,3 +19,27 @@ SQ位于Host内存中,Host要发送命令时,先把准备好的命令放在SQ中
 但是当命令完成的时候,指令执行完成,Controller往CQ中写指令执行结果.Host处理完CQ中的指令执行结果通过DB回复SSD:指令执行结果已处理.
 DB在SSD Controller端,是寄存器,DB记录着SQ和CQ的Head和Tail,每个SQ或者CQ有两个DB:Head DB 和 Tail DB
 Host只能写DB,不能读DB,Host通过SSD往CQ中写入的命令完成状态获取Head或者Tail.
+
+                                   **************  scsi ****************
+SCSI是一种计算机系统接口的标准
+SCSI是一种I/O技术
+SCSI规范了一种并行的I/O总线和相关的协议
+SCSI的数据传输方式是以块的方式进行的
+设备与SCSI设备要通过SCSI总线连接,通常距离很近,而要想进行远距离的数据存储就要选择FC（Fabre Channel）光纤通道,
+传输速度超快而且距离不受限制,但是光纤通道的代价非常的高昂,所以IBM公司就开发了基于tcp/ip报文封装SCSI类型的数据,
+进而进行远距离存储SCSI数据的iSCSI
+
+                                   **************  sas  *****************
+SAS(Serial Attached SCSI)即串行连接SCSI,SAS的接口技术可以向下兼容SATA.SATA硬盘可以直接使用在SAS的环境中,
+从接口标准上而言,SATA是SAS的一个子标准,因此SAS控制器可以直接操控SATA硬盘,但是SAS却不能直接使用在SATA的环境中,
+因为SATA控制器并不能对SAS硬盘进行控制
+
+                                   **************  block inode **********
+inode称为索引节点,作用是存放文件的属性信息和指向block的指针；
+inode是磁盘上的一块存储空间,
+inode编号是唯一的,不同的文件有唯一的inode号
+
+磁盘存取文件是按block为单位存取的；
+一个文件可能占用多个block,但是每读取一个block就会消耗一次磁盘I/O；
+如果要提升磁盘IO性能,那么block应该大一点,从而能读取更多内容；
+block太大,存放小文件就会造成空间浪费；block太小,又会消耗磁盘IO
