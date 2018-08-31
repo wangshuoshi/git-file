@@ -1,0 +1,21 @@
+                                   **************  NVME ****************                                                
+NVM Express（简称NVMe）是一个针对PCIe 接口的SSD的主机控制芯片  协议  标准
+NVMe设备（SSD）是由Controller，闪存和PCIe接口组成
+NVMe作为PCIe Endpoint，通过PCIE接口与CPU的Root Complex（RC）连接，传送内存数据
+
+优势:
+第一、NVMe标准对比AHCI标准的优势,其中之一就是  低延时  ,看上图比较直观,NVMe标准是面
+向PCI-E SSD的,使用原生PCI-E通道与CPU直连可以免去SATA与SAS接口的外置控制器(PCH)与CPU通信所带来的延时。
+第二、NVMe也大大的提升了SSD的   IOPS(Input/Output Operations Per Second)性能, 
+第三、就是更加的省电
+
+NVMe有两种命令,一种叫Admin Command(删除添加),用以Host管理和控制SSD;另外一种就是I/O Command(读写),用以Host和SSD之间数据的传输。
+NVMe有三种队列命令：Submission Queue(SQ)，Completion Queue(CQ)和Doorbell Register(DB).
+SQ和CQ位于Host的内存中,DB则位于SSD的控制器内部。
+
+SQ位于Host内存中,Host要发送命令时,先把准备好的命令放在SQ中,后通知SSD来取;CQ位于Host内存中,一令执行完成，
+成功或失败,SSD总会往CQ中写入命令完成状态。DB(位于SSD的控制器内部)则是在Host发送命令时,不是直接往SSD中发送命令的,是把命令准备
+好放在自己的内存中,Host是通过写SSD端的DB寄存器来告知SSD命令已经处理完毕,可以前来检阅,然后Controller收到通知,于是从SQ中取.
+但是当命令完成的时候,指令执行完成,Controller往CQ中写指令执行结果.
+DB在SSD Controller端,是寄存器,DB记录着SQ和CQ的Head和Tail,每个SQ或者CQ有两个DB:Head DB 和 Tail DB
+Host只能写DB，不能读DB,Host通过SSD往CQ中写入的命令完成状态获取Head或者Tail.
