@@ -23,7 +23,8 @@ Host只能写DB,不能读DB,Host通过SSD往CQ中写入的命令完成状态获�
 PCIe的Header空间和BAR空间是PCIe得以广泛使用的关键特性。Header空间是PCIe设备的通有属性，所有的PCIe Spec功能和规范都在这里实现；
 BAR空间则是设备差异化的具体体现，BAR空间的定义决定了这个设备是网卡，SSD还是虚拟设备。
 控制器controller把这段寄存器register 地址 映射 到了 bar 空间
-PCIe Header空间中有几个寄存器专门用来存储BAR空间地址
+PCIe Header空间中有几个寄存器专门用来存储BAR空间地址  BAR空间逻辑上是在host,但物理上是在device里面
+
                                    **************  scsi ****************
 SCSI是一种计算机系统接口的标准
 SCSI是一种I/O技术
