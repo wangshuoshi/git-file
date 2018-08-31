@@ -16,6 +16,6 @@ SQ和CQ位于Host的内存中,DB则位于SSD的控制器内部。
 SQ位于Host内存中,Host要发送命令时,先把准备好的命令放在SQ中,后通知SSD来取;CQ位于Host内存中,一令执行完成，
 成功或失败,SSD总会往CQ中写入命令完成状态。DB(位于SSD的控制器内部)则是在Host发送命令时,不是直接往SSD中发送命令的,是把命令准备
 好放在自己的内存中,Host是通过写SSD端的DB寄存器来告知SSD命令已经处理完毕,可以前来检阅,然后Controller收到通知,于是从SQ中取.
-但是当命令完成的时候,指令执行完成,Controller往CQ中写指令执行结果.
+但是当命令完成的时候,指令执行完成,Controller往CQ中写指令执行结果.Host处理完CQ中的指令执行结果通过DB回复SSD:指令执行结果已处理.
 DB在SSD Controller端,是寄存器,DB记录着SQ和CQ的Head和Tail,每个SQ或者CQ有两个DB:Head DB 和 Tail DB
-Host只能写DB，不能读DB,Host通过SSD往CQ中写入的命令完成状态获取Head或者Tail.
+Host只能写DB,不能读DB,Host通过SSD往CQ中写入的命令完成状态获取Head或者Tail.
