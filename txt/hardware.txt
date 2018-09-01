@@ -178,3 +178,18 @@ I2C总线是一个通用的串行总线,可以挂在slave地址.
 I2C主要用于系统内部,而RS485/232多用于外部设备的连接
 I2C从技术上说属于同步串行总线,RS485/232属于异步串行总线
 """
+
+"""
+VPD 重要产品数据
+
+ipmitool -I lanplus -U admin -P admin -H 127.0.0.1 sol activate
+打开SOL功能
+Serial Over LAN (SOL) 功能非常有用.SOL 通过 IPMI 会话重定向本地串行接口,允许远程访问访问 LINUX 串行控制台.
+SOL查看BIOS输出,需要在BIOS里将BIOS的信息重定向到串口COM2
+如果要通过SOL查看linux的控制台，还需要重定向kernel的输出
+
+feature 磁盘特性
+
+SES 协议决定了SES device必须是一个SCSI device，这是因为SES协议是通过
+SCSI Command "Send Diagnostics" 和 "receive diagnostics"传递协议中的page
+"""
