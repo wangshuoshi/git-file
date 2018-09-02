@@ -102,3 +102,9 @@ CSRF攻击原理比较简单，例如Web A为存在CSRF漏洞的网站，Web B�
 #XSS 跨站脚本攻击
 在搜索框搜索内容，填入“<script>alert('handsome boy')</script>”, 点击搜索。
 当前端页面没有对返回的数据进行过滤，直接显示在页面上， 这时就会alert那个字符串出来。
+
+ip netns add test0
+ip netns exec test0 ip link add name eth0 type dummy 创建一个虚拟接口
+ip netns exec test0 ip link set dev lo up
+ip netns exec test0 ip link set dev eth0 up
+ip netns exec test0 ip address add 10.0.2.10/24 dev eth0
