@@ -24,3 +24,8 @@ input type="button" value="提交" onclick="check()"/>
             // 阻止表单提交方式2 event.preventDefault(); ==>通知浏览器不要执行与事件关联的默认动作。
              alert("验证失败 表单不会提交!");
              event.preventDefault();
+
+$(#66) id=6
+$(.77) class=77
+$(.77,#66) ,表示并列，同时对两个进行操作
+$(.77 #66) 空格表示层级，class=77下id=66的操作   >只是下一级，亲儿子
