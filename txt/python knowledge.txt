@@ -165,3 +165,41 @@ HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次
 HTTP 1.1支持持久连接，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。
 HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端
 请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。
+
+#logger
+import logging
+#默认是warning  还有debug,这个是最低的
+logging.basicConfig(level=logging.DEBUG,#调整从哪个级别开始出来
+                    format="%(asctime)s%(filename)s[line:%(lineno)d] %(levelname)s \
+                    %(message)s",#lineno行号。格式都是自己定的
+                    datefmt="%a,%d %b %Y %H:%M:%S",#依次向上对应
+                    filename="./testhappy.log",
+                    filemode="a")
+logging.debug(msg='debug message')
+logging.info(msg='info message')
+logging.warning(msg='warning message')
+logging.error(msg='error message')
+logging.critical(msg='critical message')
+#
+#
+logger=logging.getLogger("传进的字符串作为日志名字")
+
+#logger=logging.getLogger("bmc bug")
+logger.setLevel(logging.DEBUG)#设定日志的级别
+#也可以通过下面的这种方式来设定级别
+    #logger=logging.Logger("bmc bug",level=logging.INFO)
+fh=logging.FileHandler("qwer.log")#文件显示
+ch=logging.StreamHandler()#屏幕显示
+formatter=logging.Formatter("%(asctime)s-%(name)s-%(levelname)s-%(message)s")
+fh.setFormatter(formatter)#把格式装进去
+ch.setFormatter(formatter)
+
+logger.addHandler(fh)#把各种显示加进去
+logger.addHandler(ch)
+
+logger.info("info message")
+logger.warning("warning message")
+logger.error("error message")
+logger.critical("critical message")
+#可以写成函数的形式，然后return logger，然后在调用的地方写sss.info("asdf")
+#
