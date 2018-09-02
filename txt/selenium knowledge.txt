@@ -49,8 +49,8 @@ k=ele_xpath1.get_attribute('type')#看它的属性值是什么，也可以send_k
 xialakuang = ele_xpath1.is_displayed()#尤其是下拉框，判断返回的结果是否显示出来的
 ele_xpath2 = b.find_element_by_xpath('//input[n]')#全局搜索，不确定是在那个层级下面，用//
 #还可以用.来代表父节点
-ele_xpath3 = b.find_element_by_xpath('//input[@id]')
-#也可以是[not（@id）]
+ele_xpath3 = b.find_element_by_xpath('//input[@id]')   input下有id属性的
+#也可以是[not(@id)]
 ele_xpath4 = b.find_element_by_xpath('//input[@name="afsdfa"]')
 ele_xpath41 = b.find_elements_by_xpath('//input[@name="afsdfa"]')[1]#第一个
 ele_xpath5 = b.find_element_by_xpath('//*[count(input)=2]')#定位input个数为2的
