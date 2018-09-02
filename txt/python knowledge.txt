@@ -4,6 +4,11 @@ range返回一个列表，xrange是生成一个生成器对象，python已经取
 yml - 是列表
 .format在许多方面看起来更便利.对于%最烦人的是它无法同时传递一个变量和元组.
 
+python manage.py makemigrations appname
+python manage.py migrate appname
+
+python manage.py runserver 0.0.0.0:8000
+
 onblur="return check()"
 <input type="button" value="提交" onclick="check()"/>
 
