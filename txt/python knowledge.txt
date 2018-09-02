@@ -4,6 +4,9 @@ range返回一个列表，xrange是生成一个生成器对象，python已经取
 yml - 是列表
 .format在许多方面看起来更便利.对于%最烦人的是它无法同时传递一个变量和元组.
 
+onblur="return check()"
+<input type="button" value="提交" onclick="check()"/>
+
 MVC是众所周知的模式，即：将应用程序分解成三个组成部分:model(模型),view(视图),和 controller(控制 器)。其中：
              M 管理应用程序的状态（通常存储到数据库中），并约束改变状态的行为（或者叫做“业务规则”）。
              C 接受外部用户的操作，根据操作访问模型获取数据，并调用“视图”显示这些数据。控制器是将“模型”和“视图”隔离，并成为二者之间的联系纽带。
@@ -202,4 +205,3 @@ logger.warning("warning message")
 logger.error("error message")
 logger.critical("critical message")
 #可以写成函数的形式，然后return logger，然后在调用的地方写sss.info("asdf")
-#
