@@ -29,3 +29,18 @@ $(#66) id=6
 $(.77) class=77
 $(.77,#66) ,表示并列，同时对两个进行操作
 $(.77 #66) 空格表示层级，class=77下id=66的操作   >只是下一级，亲儿子
+
+<script type="text/javascript">
+//在第一个div中动态增加一个a标签. 该a标签点击之后跳转到百度首页.
+    function addNode(){
+        //1.获得 第一个div
+        var div = document.getElementById("div_1");
+        //2.创建a标签  createElement==>创建一个a标签   <a></a>
+        var eleA =  document.createElement("a");
+        //3.为a标签添加属性 <a href="http://www.baidu.com"></a>
+        eleA.setAttribute("href", "http://www.baidu.com");
+        //4.为a标签添加内容 <a href="http://www.baidu.com">百度</a>
+        eleA.innerHTML = "百度";    
+        //5.将a标签添加到div中
+        div.appendChild(eleA);
+    }
