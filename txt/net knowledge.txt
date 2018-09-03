@@ -174,3 +174,11 @@ TCP长连接: client向server发起连接，server接受client连接，双方建
 因为虽然双方都同意关闭连接了，而且握手的4个报文也都发送完毕，按理可以直接回到CLOSED状态（就好比从SYN_SENT状态到ESTABLISH
 状态那样），但是我们必须假想网络是不可靠的，你无法保证你最后发送的ACK报文一定会被对方收到，就是说对方处于LAST_ACK状态下的
 SOCKET可能会因为超时未收到ACK报文，而重发FIN报文，所以这个TIME_WAIT状态的作用就是用来重发可能丢失的ACK报文。
+
+HTTP 、TCP、Socket
+TCP/IP代表传输控制协议/网际协议，指的是一系列协组
+HTTP本身就是一个协议，是从Web服务器传输超文本到本地浏览器的传送协议
+Socket是TCP/IP网络的API其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，
+让Socket去组织数据，以符合指定的协议
+综上所述：需要IP协议来连接网络;TCP是一种允许我们安全传输数据的机制，使用TCP协议来传输数据的HTTP是Web服务器和客户端使用的
+特殊协议。HTTP基于TCP协议，但是却可以使用socket去建立一个TCP连接
