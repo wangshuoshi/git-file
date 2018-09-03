@@ -56,3 +56,9 @@ inode编号是唯一的,不同的文件有唯一的inode号
 一个文件可能占用多个block,但是每读取一个block就会消耗一次磁盘I/O；
 如果要提升磁盘IO性能,那么block应该大一点,从而能读取更多内容；
 block太大,存放小文件就会造成空间浪费；block太小,又会消耗磁盘IO
+
+                                    **************  block inode **********
+sg_inq /dev/sda   fetch standard response, VPD pages or version descriptors  
+sg_inq /dev/sda --page=0 -H 以十六进制形式显示
+sg_modes /dev/sda -HH  fetch mode pages
+sg_map -n -i     /dev/sg0  /dev/sda  SEAGATE   ST4000NM0005      M001   一种映射
