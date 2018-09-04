@@ -1,19 +1,45 @@
 CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci
+
+create table 表名(
+    列名  类型  是否可以为空，
+    列名  类型  是否可以为空
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+改
+update 表 set name ＝ 'alex' where id>1
+
 自增
 auto_increment
 primary key
-分页 limit
+分页 limit  select * from 表 limit 4,5
 like查询
 select * from table1 where name like ‘%[!0-9]%’
 
 delete命令删除的数据将存储在系统回滚段中，需要的时候，数据可以回滚恢复,DELETE的仍保留原来的最大数值
 truncate table命令将快速删除数据表中的所有记录，但保留数据表结构,TRUNCATE之后的自增字段从头开始计数了
 
+主键
+nid int not null auto_increment primary key
+primary key(nid,num)
+alter table 表名 add primary key(列名);
+
+外键
+constraint fk_cc foreign key (color_id) references color(nid)
+alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);
+
+索引
+index ix_name (name)
+create index index_name on table_name(column_name)
+create index ix_name_email on in3(name,email);（组合索引）
+
+排序
+group by 必须在where之后，order by之前
+
 触发器
 触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的
 删除触发器DROP TRIGGER tri_after_insert_tb1;
 delimiter //
-CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW
+CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW         ！！！
 BEGIN
 IF NEW. NAME == 'alex' THEN
     INSERT INTO tb2 (NAME)
@@ -41,7 +67,7 @@ BEGIN
 end\\
 delimiter ;
 -- 执行存储过程
-set @t1 =4;
+set @t1 =4;    @代表能out的
 set @t2 = 0;
 CALL p1 (1, 2 ,@t1, @t2);
 SELECT @t1,@t2;
@@ -84,6 +110,7 @@ FROM
     A
 WHERE
     nid > 4
+使用视图select * from v1
 
 F查询
 from django.db.models import F
