@@ -35,6 +35,13 @@ create index ix_name_email on in3(name,email);（组合索引）
 排序
 group by 必须在where之后，order by之前
 
+ORM
+user_info_objs = models.UserInfo.objects.all()             manytomany在group里面
+group_obj = models.UserGroup.objects.get(caption='CEO')
+user_info_obj.usergroup_set.add(group_obj)  查询另外一张表  所以用_set
+user_info_obj.usergroup_set.all().filter(caption='CEO') 查询另外一张表
+group_obj.user_info.all().filter(id=1)    因为manytomany在group那里，所以当用group查询时可以直接这样查询
+
 触发器
 触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的
 删除触发器DROP TRIGGER tri_after_insert_tb1;
