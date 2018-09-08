@@ -40,3 +40,32 @@ def rec(x,y):
     else:
         return rec(x-1,y)+rec(x,y-1)
 print(rec(3,2))
+
+十进制=二进制幸运数
+def f(s):
+    ans=0
+    for i in s:
+        ans+=int(i)
+    return ans
+def g(s):
+    ans=0
+    for i in s:
+        if i=='1':
+            ans+=1
+    return ans
+res=0
+for i in range(1,int(input())+1):
+    if g(str(bin(i)))==f(str(i)):
+        res+=1
+print(res)
+身份证分组
+import sys
+for line in sys.stdin.readlines():
+    line=line.replace(' ','').replace('\n','')
+    n=len(line)
+    if n<=6:
+        print(line[:6])
+    elif n<=14:
+        print(line[:6]+' '+line[6:14])
+    else:
+        print(line[:6]+' '+line[6:14]+' '+line[14:18])
