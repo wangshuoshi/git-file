@@ -69,3 +69,7 @@ for line in sys.stdin.readlines():
         print(line[:6]+' '+line[6:14])
     else:
         print(line[:6]+' '+line[6:14]+' '+line[14:18])
+反转数字
+x, y = input().split()
+add = int(x[::-1]) + int(y[::-1])                         用步长还有字符串转成数字
+print(int(str(add)[::-1]))
