@@ -1,1 +1,42 @@
+大富翁f(n) = f(n-1)+f(n-2)+f(n-3)+....+f(1)+f(0)
+def numer(n):
+    sum = 0
+    #用于记录每次分解得到的步数
+    if n == 1 or n == 0:
+        return 1
+    else:
+        for i in range(n):# 根据当前n的值，循环n次,将其分解为f(0) + f(1) + ... + f(n-1)
+            sum=sum+numer(i)
+            return sum
 
+硬币多少种组合
+def split_money(n):
+    int(a)
+    money = [1, 5, 10, 20, 50, 100]
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in money:
+        for j in range(1, n+1):
+            if j >= i: dp[j] += dp[j-i]
+    return dp[n]
+
+两个字符串里面相同且最大的字符串
+s1 = input()
+s2 = input()
+dp = [[0 for _ in range(len(s2)+1)]for _ in range(len(s1)+1)]
+print(dp,len(dp))
+maxl = 0
+for i in range(len(s1)):
+    for j in range(len(s2)):
+        if s1[i] == s2[j]:
+            dp[i+1][j+1] = dp[i][j] + 1
+            maxl = max(maxl, dp[i+1][j+1])
+print(maxl)
+
+方格向下走有几种走法
+def rec(x,y):
+    if(x==1)or(y==1):
+        return x+y
+    else:
+        return rec(x-1,y)+rec(x,y-1)
+print(rec(3,2))
