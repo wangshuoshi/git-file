@@ -87,3 +87,19 @@ def count(n):
     if int(sum) != n:
       return int(sum)
   return -1
+
+解决x+x平方的问题
+import math
+h=int(input())
+x = math.sqrt((4*h+1)/4) - 0.5
+print(math.floor(x))
+
+删除公共字符串
+alist1=input()
+alist2=input()
+for i in alist2:
+    try:
+        alist1=alist1.replace(alist1[alist1.index(i)],'')
+    except Exception:
+        continue
+print(alist1)
