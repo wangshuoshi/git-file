@@ -33,15 +33,15 @@ for i in range(len(s1)):
             maxl = max(maxl, dp[i+1][j+1])
 print(maxl)
 
-方格向下走有几种走法
-def rec(x,y):
+方格向下走有几种走法                          用最简单的方式，然后递归
+def rec(x,y):  
     if(x==1)or(y==1):
         return x+y
     else:
         return rec(x-1,y)+rec(x,y-1)
 print(rec(3,2))
 
-十进制=二进制幸运数
+十进制=二进制幸运数                          二进制是用bin()，可以转化为字符串str来遍历
 def f(s):
     ans=0
     for i in s:
@@ -58,7 +58,8 @@ for i in range(1,int(input())+1):
     if g(str(bin(i)))==f(str(i)):
         res+=1
 print(res)
-身份证分组
+
+身份证分组                                               直接可以用列表切片来处理
 import sys
 for line in sys.stdin.readlines():
     line=line.replace(' ','').replace('\n','')
@@ -69,12 +70,13 @@ for line in sys.stdin.readlines():
         print(line[:6]+' '+line[6:14])
     else:
         print(line[:6]+' '+line[6:14]+' '+line[14:18])
+
 反转数字
 x, y = input().split()
 add = int(x[::-1]) + int(y[::-1])                         用步长还有字符串转成数字
 print(int(str(add)[::-1]))
 
-分苹果
+分苹果                                                    先用小的来分，然后再用大的来分，别忘了range范围要+1
 def count(n):
   if n == 6 or n == 8:
     return 1
@@ -88,13 +90,13 @@ def count(n):
       return int(sum)
   return -1
 
-解决x+x平方的问题
+解决x+x平方的问题                                          公式而已
 import math
 h=int(input())
 x = math.sqrt((4*h+1)/4) - 0.5
 print(math.floor(x))
 
-删除公共字符串
+删除公共字符串                                             通过遍历，replace是会生成一个新的字符串
 alist1=input()
 alist2=input()
 for i in alist2:
@@ -104,7 +106,7 @@ for i in alist2:
         continue
 print(alist1)
 
-互相加减
+互相加减                                                通过观察数据来判断
 i1, i2, i3, i4 = map(int, input().split())
 a = (i1 + i3) // 2 if (i1 + i3) % 2 == 0 and (i1 + i3) >= 0 else None
 b = (i2 + i4) // 2 if (i2 + i4) % 2 == 0 and (i2 + i4) >= 0 else None
