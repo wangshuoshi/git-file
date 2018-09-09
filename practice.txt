@@ -73,3 +73,17 @@ for line in sys.stdin.readlines():
 x, y = input().split()
 add = int(x[::-1]) + int(y[::-1])                         用步长还有字符串转成数字
 print(int(str(add)[::-1]))
+
+分苹果
+def count(n):
+  if n == 6 or n == 8:
+    return 1
+  elif n >= 8:
+    sum = n
+    for i in range(0, int(n / 6) + 1):
+      j = (n - 6 * i) / 8
+      if j in range(0, int(n / 8) + 1) and (i + j) < sum:
+        sum = i + j
+    if int(sum) != n:
+      return int(sum)
+  return -1
