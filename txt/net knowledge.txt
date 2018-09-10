@@ -182,3 +182,16 @@ Socket是TCP/IP网络的API其实就是一个门面模式，它把复杂的TCP/I
 让Socket去组织数据，以符合指定的协议
 综上所述：需要IP协议来连接网络;TCP是一种允许我们安全传输数据的机制，使用TCP协议来传输数据的HTTP是Web服务器和客户端使用的
 特殊协议。HTTP基于TCP协议，但是却可以使用socket去建立一个TCP连接
+
+                  *******************  http soap rest  ******************* 
+http是标准超文本传输协议。使用时对参数进行编码并将参数作为键值对传递，还使用关联的请求语义。每个协议都包含一系列HTTP请求标头
+及其他一些信息，定义客户端向服务器请求哪些内容，服务器用一系列HTTP响应标头和所请求的数据进行响应。
+
+SOAP（Simple Object AccessProtocol）简单对象访问协议。它是轻型协议，用于分散的、分布式计算环境中交换信息。SOAP有助于以独立
+于平台的方式访问对象、服务和服务器。它借助于XML，提供了HTTP所需的扩展。
+
+REST(Representational State Transfer)一种轻量级的Web Service架构。可以完全通过HTTP协议实现。还可以利用缓存Cache来提高响应
+速度，性能、效率和易用性上都优于SOAP协议。REST架构对资源的操作包括获取、创建、修改和删除资源的操作正好对应HTTP协议提供的
+GET、POST、PUT和DELETE方法。
+
+安全性：SOAP会好于restful  效率和易用性(REST更胜一筹) REST允许很多不同的数据格式而 SOAP仅支持 XML
