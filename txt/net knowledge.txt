@@ -195,3 +195,6 @@ REST(Representational State Transfer)一种轻量级的Web Service架构。可�
 GET、POST、PUT和DELETE方法。
 
 安全性：SOAP会好于restful  效率和易用性(REST更胜一筹) REST允许很多不同的数据格式而 SOAP仅支持 XML
+SOAP 不仅像 REST 一样支持 SSL，而且还支持增加了很多企业级安全特性的 WS-Security(WS = web services)。因此它能够提供通过中介的
+身份验证，而不仅仅是端对端的验证(SSL)  去银行存取钱就可以用到soap，保证web service安全和web service可靠
+REST 不具备一个标准的消息体系，它期望客户端通过重试来处理通信失败。SOAP 具备内置的成功/重试逻辑并通过 SOAP 中介来提供端对端的可靠性。
