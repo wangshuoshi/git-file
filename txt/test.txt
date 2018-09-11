@@ -1,3 +1,8 @@
+负载测试，通过测试系统在资源超负荷情况下的表现，将使测试对象承担不同的工作量，以评测和评估测试对象在不同工作量
+	条件下的性能行为，以及持续正常运行的能力
+压力测试，是模拟实际应用的软硬件环境及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的
+	性能、可靠性、稳定性
+
 #mock  #模拟mock封装 mock模拟的是一个方法
 from mock import mock
 def mock_test(mock_method,request_data,url,method,response_data):
