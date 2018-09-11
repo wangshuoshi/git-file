@@ -269,7 +269,7 @@ if __name__ == "__main__":
   main()
 
 异步io
-用
+用asyncio
 import threading
 import asyncio
 
