@@ -10,16 +10,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-b = webdriver.Edge()
-b.get(url='http://www.baidu.com')
-title =b.title#查看title
-a='百度' in b.title#查看是否正确打开网页，用title来查看
+b = webdriver.Edge()                                            第一步
+b.get(url='http://www.baidu.com')                               第二
+title =b.title#查看title                                         3
+a='百度' in b.title#查看是否正确打开网页，用title来查看             4
 #a=b.current_url
 #a='baidu' in b.current_url#
 #把drive加载到环境变量里面
 #如果返回再重新定位，则元素的id会变化
 #用的是2.48.2
-ele = b.find_element_by_id('kw')#定位元素
+ele = b.find_element_by_id('kw')#定位元素                       5
 ele1 = b.find_element_by_name('wd')
 ele2 = b.find_element_by_class_name('s_ipt')
 ele3 = b.find_element_by_tag_name('input')#不是很好，因为很多同样标签时出错
@@ -33,10 +33,10 @@ ele53 = b.find_element_by_css_selector('span.bg > input#kw')#>左边的是父目
 #这里输入的是tag，tag是个字典，也可以用审查元素来查看，然后复制过来
 #id是唯一的
 
-a = ele4.click()#点击
-print(id(ele))
+a = ele4.click()#点击                                         6
+print(id(ele))                      
 print(type(ele))
-ele.send_keys('maizixueyuan')#输入
+ele.send_keys('maizixueyuan')#输入                            7
 #ele.clear()#清空
 b.back()#返回
 
@@ -64,8 +64,8 @@ ele_xpath10 = b.find_element_by_xpath("//span[@span='bg']/input")#可以嵌套
 #调整浏览器页面大小
 b.set_window_size(480, 800)#模拟手机页面
 b.maximize_window()#全屏
-b.forward()#浏览器前进
-b.refresh()#刷新
+b.forward()#浏览器前进                                           8
+b.refresh()#刷新                                                9
 ele_asd = b.find_element_by_id('kw').clear()
 ele_asd1 = b.find_element_by_id('kw').send_keys('你好')
 ele_asd2 = b.find_element_by_id('loginbtn').click()#按钮、链接
@@ -90,7 +90,7 @@ b.find_element_by_id('kw').send_keys(Keys.ENTER)
 b.find_element_by_id('kw').send_keys('教程')
 b.find_element_by_id('kw').send_keys(Keys.CONTROL,'x')#也可以是a、v，模拟键盘的ctrl+a
 
-#显式等待，针对某个元素
+#显式等待，针对某个元素                                                10
 #隐式等待，针对当前页面当中的所有元素等待
 a12 = WebDriverWait(b, 5, 1).until(EC.presence_of_element_located(By.ID,"KW"))
 #针对某个元素的等待，等待5秒，每隔1秒检查一次，直到后面的方法为true
@@ -155,7 +155,7 @@ b.find_element_by_name('file').send_keys('d:\\aasdfa')#直接传值
 #用python执行exe
 os.system("asd.exe")#选择那个exe文件就可以了
 
-#下载
+#下载                                                                     下载设置
 fp = webdriver.FirefoxProfile()
 fp.set_preference("", xx)#进行各项设置，保存路径
 drive = webdriver.Firefox(firefox_profile=fp)#传进去
@@ -293,7 +293,7 @@ print("最新的文件为：",lists[-1])
 file = os.path.join(result_dir,lists[-1])
 
 #selenium grid   分布式，多个不同平台上
-#hub 主节点，node 分节点，可以有很多
+#hub 主节点，node 分节点，可以有很多                                  分布式多平台
 from selenium import webdriver
 browsers = ['firefox', 'chrome','internet explorer']
 for browser in browsers:#在源代码里面可以看到哪个浏览器是什么配置
