@@ -286,7 +286,7 @@ if __name__ == "__main__":
 import threading
 import asyncio
 
-@asyncio.coroutine
+@asyncio.coroutine  @asyncio.coroutine把一个generator标记为coroutine类型，然后，我们就把这个coroutine扔到EventLoop中执行
 def hello():
     print('Hello world! (%s)' % threading.currentThread())
     yield from asyncio.sleep(1)
