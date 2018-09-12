@@ -1,3 +1,5 @@
+placeholder灰色的提示文字（请输入账号密码）
+
 <div onclick="alert(123)">点我呀</div>  第一种
 input type="button" value="提交" onclick="check()"/>
                                  onblur="return check()"
