@@ -198,7 +198,7 @@ SOAP 不仅像 REST 一样支持 SSL，而且还支持增加了很多企业级�
 身份验证，而不仅仅是端对端的验证(SSL)  去银行存取钱就可以用到soap，保证web service安全和web service可靠
 REST 不具备一个标准的消息体系，它期望客户端通过重试来处理通信失败。SOAP 具备内置的成功/重试逻辑并通过 SOAP 中介来提供端对端的可靠性。
 
-
+                              *******************  http ******************* 
 http(Hypertext transfer protocol)超文本传输协议，通过浏览器和服务器进行数据交互，进行超文本
 （文本、图片、视频等）传输的规定。也就是说，http协议规定了超文本传输所要遵守的规则
 1、输入URL。不管是链接还是地址栏的输入，情况都是一样的。http协议已经规定了URL的格式，通过http协议中的域名或IP找到服务器。
@@ -231,11 +231,3 @@ DELETE： 请求服务器删除指定的页面
 3、POST请求同PUT请求类似，都是向服务器端发送数据的，但是该请求会改变数据的种类等资源，就像数据库的insert操作一样，
 会创建新的内容。几乎目前所有的提交操作都是用POST请求的。
 4、DELETE请求顾名思义，就是用来删除某一个资源的，该请求就像数据库的delete操作。
-
-①是请求方法，GET和POST是最常见的HTTP方法，除此以外还包括DELETE、HEAD、OPTIONS、PUT、TRACE。不过，当前的大多数浏览器只支持GET和POST，Spring 3.0提供了一个HiddenHttpMethodFilter，允许你通过“_method”的表单参数指定这些特殊的HTTP方法（实际上还是通过POST提交表单）。服务端配置了HiddenHttpMethodFilter后，Spring会根据_method参数指定的值模拟出相应的HTTP方法，这样，就可以使用这些HTTP方法对处理方法进行映射了。 
-
-②为请求对应的URL地址，它和报文头的Host属性组成完整的请求URL，③是协议名称及版本号。 
-
-④是HTTP的报文头，报文头包含若干个属性，格式为“属性名:属性值”，服务端据此获取客户端的信息。 
-
-⑤是报文体，它将一个页面表单中的组件值通过param1=value1&param2=value2的键值对形式编码成一个格式化串，它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于“/chapter15/user.html? param1=value1&param2=value2”的方式传递请求参数。 
