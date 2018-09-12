@@ -4,6 +4,10 @@ range返回一个列表，xrange是生成一个生成器对象，python已经取
 yml - 是列表
 .format在许多方面看起来更便利.对于%最烦人的是它无法同时传递一个变量和元组.
 
+线程占有的都是不共享的，其中包括：栈、寄存器、状态、程序计数器
+线程间共享的有：堆，全局变量，静态变量；
+进程占有的资源有：地址空间，全局变量，打开的文件，子进程，信号量、账户信息
+
 python manage.py makemigrations appname
 python manage.py migrate appname
 
