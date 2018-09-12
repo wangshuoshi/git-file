@@ -198,3 +198,11 @@ GET、POST、PUT和DELETE方法。
 SOAP 不仅像 REST 一样支持 SSL，而且还支持增加了很多企业级安全特性的 WS-Security(WS = web services)。因此它能够提供通过中介的
 身份验证，而不仅仅是端对端的验证(SSL)  去银行存取钱就可以用到soap，保证web service安全和web service可靠
 REST 不具备一个标准的消息体系，它期望客户端通过重试来处理通信失败。SOAP 具备内置的成功/重试逻辑并通过 SOAP 中介来提供端对端的可靠性。
+
+post和get的区别
+get把请求的数据放在url上，即HTTP协议头上，其格式为：以?分割URL和传输数据，参数之间以&相连
+post把数据放在HTTP的包体内（requrest body）
+get提交的数据最大是2k
+post理论上没有限制
+GET产生一个TCP数据包，浏览器会把http header和data一并发送出去，服务器响应200(返回数据); 
+POST产生两个TCP数据包，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok(返回数据)。
