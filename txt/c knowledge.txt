@@ -1,0 +1,7 @@
+extern int i; //声明，不是定义  extern int a 其中变量 a 可以在别的文件中定义的
+int i; //声明，也是定义   int a 在声明的时候就已经建立了存储空间
+
+定义常量
+在 C 中，有两种简单的定义常量的方式：
+使用 #define 预处理器   #define LENGTH 10 
+使用 const 关键字  const int  LENGTH = 10;
