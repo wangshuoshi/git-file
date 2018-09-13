@@ -191,6 +191,6 @@ SOL查看BIOS输出,需要在BIOS里将BIOS的信息重定向到串口COM2
 
 feature 磁盘特性
 
-SES 协议决定了SES device必须是一个SCSI device，这是因为SES协议是通过
+SES (SCSI Enclosure Service)协议决定了SES device必须是一个SCSI device，这是因为SES协议是通过
 SCSI Command "Send Diagnostics" 和 "receive diagnostics"传递协议中的page
 """
