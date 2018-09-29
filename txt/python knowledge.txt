@@ -19,6 +19,22 @@ yml - 是列表
 链表的优点：插入删除速度快，内存利用率高，不会浪费内存，大小没有固定，拓展很灵活。
 链表的缺点：不能随机查找，必须从第一个开始遍历，查找效率低
 
+python自省模式：
+getattr()函数是Python自省的核心函数
+class Person(object):
+    def __init__(self,name):
+        self.name = name
+    def talk(self):
+        print("%s正在交谈"%self.name)
+p = Person("laowang")
+n = getattr(p,"name")   # 获取name变量的内存地址
+print(n)                # 此时打印的是:laowang
+f = getattr(p,"talk")   # 获取talk方法的内存地址
+f()                     # 调用talk方法
+我们发现getattr有三个参数，那么第三个参数是做什么用的呢?
+s = getattr(p,"abc","not find")
+print(s)                # 打印结果：not find。因为abc在对象p中找不到，本应该报错，属性找不到，但因为修改了找不到就输出not find
+
 线程占有的都是不共享的，其中包括：栈、寄存器、状态、程序计数器
 线程间共享的有：堆，全局变量，静态变量；
 进程占有的资源有：地址空间，全局变量，打开的文件，子进程，信号量、账户信息
