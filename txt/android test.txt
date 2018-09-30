@@ -20,3 +20,13 @@ adb shell dumpsys cpuinfo|grep pacaagename    不要超过80%
 adb shell ps|grep packagename
 2、获取流量
 adb shell cat /proc/pid/net/dev 各网卡流量之和，两次操作之间意味着获取的流量
+
+获取电量
+1、切换到非充电状态 adb shell dumpsys battery set status 1 #只要是非2状态就行
+2、获取点亮 adb shell dumpsys battery
+
+获取内存
+adb shell top         vss虚拟耗用内存 rss实际使用内存
+
+FPS 每秒的帧数，如果一帧的执行时间大于16ms则可以认为有卡顿现象   gpu呈现模式分析，选择在屏幕显示为条形图，绿色的线代表是16ms
+过度渲染：屏幕上某个像素在同一真的时间内被绘制了多次   选择显示gpu过度绘制
