@@ -32,7 +32,8 @@ FPS 每秒的帧数，如果一帧的执行时间大于16ms则可以认为有卡
 过度渲染：屏幕上某个像素在同一真的时间内被绘制了多次   选择显示gpu过度绘制
 
 自动化测试：
-appium（需要安装）、android sdk（安卓官网下载然后配置环境变量）、appium-python-client（然后去执行里面的setup.py这个文件）、selenium、uiautomatorviewer
+appium（需要安装）、android sdk（安卓官网下载然后配置环境变量）、appium-python-client（然后去执行里面的setup.py这个文件）、
+selenium、uiautomatorviewer
 安卓定位元素
 Android里面定位的id一般为resrouce-id
 确定设备，使用的是adb devices
