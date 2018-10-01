@@ -30,3 +30,10 @@ adb shell top         vss虚拟耗用内存 rss实际使用内存
 
 FPS 每秒的帧数，如果一帧的执行时间大于16ms则可以认为有卡顿现象   gpu呈现模式分析，选择在屏幕显示为条形图，绿色的线代表是16ms
 过度渲染：屏幕上某个像素在同一真的时间内被绘制了多次   选择显示gpu过度绘制
+
+安卓定位元素
+Android里面定位的id一般为resrouce-id
+确定设备，使用的是adb devices
+安卓sdk自带的uiautomator viewer可以定位元素，这个工具在android-sdk/tools里面，启动，sudo ./uiautomatorviewer
+webdriver.remote("",,desired_caps)可以把app和脚本进行交互
+查找到元素id，resrouce-id对应值的id：后面便是真的id值了
