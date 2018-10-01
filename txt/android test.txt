@@ -31,7 +31,7 @@ adb shell top         vss虚拟耗用内存 rss实际使用内存
 FPS 每秒的帧数，如果一帧的执行时间大于16ms则可以认为有卡顿现象   gpu呈现模式分析，选择在屏幕显示为条形图，绿色的线代表是16ms
 过度渲染：屏幕上某个像素在同一真的时间内被绘制了多次   选择显示gpu过度绘制
 
-自动化测试：
+自动化测试：love  location定位元素、operation操作元素、verify验证结果、exception处理异常
 appium（需要安装）、android sdk（安卓官网下载然后配置环境变量）、appium-python-client（然后去执行里面的setup.py这个文件）、
 selenium、uiautomatorviewer
 安卓定位元素
@@ -40,6 +40,16 @@ Android里面定位的id一般为resrouce-id
 安卓sdk自带的uiautomator viewer可以定位元素，这个工具在android-sdk/tools里面，启动，sudo ./uiautomatorviewer
 appium控制uiautomator
 webdriver.remote("节点地址",desired_caps)可以把app和脚本进行交互
-查找到元素id，resrouce-id对应值的id：后面便是真的id值了
+查找到元素id，resrouce-id对应值的id：后面便是真的id值了，find_element_by_id()还有find_element_by_accessibility_id()
+driver.press_keycode()更快一点，因为其他的需要先去定位然后再去触发，而这个是直接出发硬件 计算机可以直接点击各数字测试，也可以在输入框输入
+self.driver.scroll（从一个元素，到另一个元素）两个元素都是刚才find_element定位出来的
+self.driver.drag_and_drop(从一个元素，到另一个元素)这个是拖拽，和上面的一样
 
-想测试，需要启动appium
+想测试，
+1、需要启动appium（选择是安卓还是ios），
+2、automation name分为appium（基于uiautomator框架）和selendroid（Android Instrumentation框架，主要测试混合app）
+3、选择安卓版本，然后启动appium
+
+
+appium是一个跨平台的测试工具，跨架构支持测试native（原生）和hybrid（混合）应用以及webview，支持ios和安卓以及firefoxOS，而且跨语言
+在安卓平台，appium是基于uiautomator框架
