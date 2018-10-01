@@ -1,0 +1,17 @@
+string操作
+ord("a")   求a的ASCII码  bin(666)求666的二进制码
+set name alex  设置键值
+get name  获取值
+keys *    显示所有的key
+set name alex ex 3   3秒之后自动删除
+ex，过期时间（秒） px，过期时间（毫秒） 
+nx，如果设置为True，则只有name不存在时，当前set操作才执行 
+xx，如果设置为True，则只有name存在时，岗前set操作才执行
+mset name1 alex name2 fanta   mset可以批量设置键值对
+mget name1 name2    mget批量获取键对应的值
+getrange name1 0-2  对值进行切片
+getbit name 6   获取name对应值的二进制码的第6位
+setbit name 6 1 把name对应值的二进制码的第6位设置为1  这种情况比重新赋值要快
+bitcount name 获取name对应的值的二进制表示中1的个数  
+例如签到表，谁来了就直接设置为1（setbit name 6 1）第6位为1，还有看谁是否来了也就是是否为1（getbit name 6）6为签到者id
+这样用1个字段就可以完成大批量的任务，节省了空间内存还有查询时间
