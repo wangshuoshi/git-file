@@ -44,6 +44,19 @@ webdriver.remote("节点地址",desired_caps)可以把app和脚本进行交互
 driver.press_keycode()更快一点，因为其他的需要先去定位然后再去触发，而这个是直接出发硬件 计算机可以直接点击各数字测试，也可以在输入框输入
 self.driver.scroll（从一个元素，到另一个元素）两个元素都是刚才find_element定位出来的
 self.driver.drag_and_drop(从一个元素，到另一个元素)这个是拖拽，和上面的一样
+self.driver.swipe(x,y,x1,y1)起始位置坐标
+self.driver.tap（[x,y]）触摸点的位置坐标
+self.driver.flick(x,y,x1,y1)快速滑动
+self.driver.current_activity输出当前activity的名字
+self.driver.wait_activity("名字",3,1)等待3秒钟，每隔1秒检查一次
+self.driver.background_app(3)将一个程序置于后台3秒钟
+self.driver.is_app_installed("名字")是否安装了
+self.driver.remove_app("名字")删除app
+self.driver.install_app("名字")安装app
+self.driver.launch_app("名字")启动app
+self.driver.close_app("名字")关闭app
+self.driver.start_activity("包的名字","包下面的activity")启动
+self.driver.get_screenshot_as_file("存为什么名字")截屏
 
 想测试，
 1、需要启动appium（选择是安卓还是ios），
