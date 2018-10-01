@@ -58,7 +58,7 @@ self.driver.close_app("名字")关闭app
 self.driver.start_activity("包的名字","包下面的activity")启动
 self.driver.get_screenshot_as_file("存为什么名字")截屏
 
-想测试，
+测试步骤：
 1、需要启动appium（选择是安卓还是ios），
 2、automation name分为appium（基于uiautomator框架）和selendroid（基于Android Instrumentation框架，主要测试混合app）
 3、选择安卓版本，然后启动appium
@@ -69,18 +69,8 @@ appium是一个跨平台的测试工具，跨架构支持测试native（原生�
 基于混合型app（hybrid app）
 使用selendroid框架，appium来控制selendroid框架
 而此时的识别还需要加上chrome inspector页面识别
-s-love s是switch上下文切换
+s-love s是switch上下文切换，例如浏览器，输入了百度，出现百度后，还需要再搜索栏里卖弄输入其他信息
+self.driver.switch_to.context("webview_0")接下来就是用chrom里面的检查元素，切换到手机模式，然后进行定位元素了
 
 这时候在配置appium的时候必须配置app path 因为selendroid需要对app重签名
 在脚本里面只是多了一个automationName=selendroid
-
-
-
-
-
-
-
-
-
-
-
