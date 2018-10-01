@@ -38,7 +38,8 @@ selenium、uiautomatorviewer
 Android里面定位的id一般为resrouce-id
 确定设备，使用的是adb devices
 安卓sdk自带的uiautomator viewer可以定位元素，这个工具在android-sdk/tools里面，启动，sudo ./uiautomatorviewer
-webdriver.remote("",,desired_caps)可以把app和脚本进行交互
+appium控制uiautomator
+webdriver.remote("节点地址",desired_caps)可以把app和脚本进行交互
 查找到元素id，resrouce-id对应值的id：后面便是真的id值了
 
 想测试，需要启动appium
