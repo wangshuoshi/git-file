@@ -15,3 +15,5 @@ setbit name 6 1 把name对应值的二进制码的第6位设置为1  这种情�
 bitcount name 获取name对应的值的二进制表示中1的个数  
 例如签到表，谁来了就直接设置为1（setbit name 6 1）第6位为1，还有看谁是否来了也就是是否为1（getbit name 6）6为签到者id
 这样用1个字段就可以完成大批量的任务，节省了空间内存还有查询时间
+incr name 1 设置为自增，从1开始 decr自减
+append name yyy 从原来的值上继续添加字符串
