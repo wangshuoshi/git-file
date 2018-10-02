@@ -51,6 +51,23 @@ blpop names 40 让names卡住40秒，有东西塞入就不卡了
 
 集合
 sadd name xiaohu alex xiaohu   这时候只能插入
+scard name 获取集合里面的个数
+sdiff set_name names  比较两个集合，会输出不同的数值出来
+sdiffstore set_n2 set_name names 把后两个不同的放到第一个里面
+sinter set_n2 name  查交集
+sismember set_n2 alex 查询ales是否在集合里面
+smembers name  查看name的所有值
+srandmember name 随机获取几个值
+          有序集合
+zadd name 5 xiaohu 3 alex
+zrange name 0 -1会进行排序
+zrange name xiaohu 查看某一个排名
+
+
+
+
+
+
 
 
 
