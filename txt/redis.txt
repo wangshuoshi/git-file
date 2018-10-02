@@ -33,3 +33,25 @@ HEXIST info name  有的话返回是1，没有返回0
 hdel info name 指定的删除
 hincrby info age 自增
 HSCAN info a* 匹配出来所有a开头的键值对
+
+列表list
+一个键对应的是一个列表
+lpush name alex jack alex 可以重复，name代表的是键 
+llen name 查看长度
+lrange names 0 -1  必须加上参数，代表的是从第0个到第-1个 这个类似于队列，先进后出
+lpushx name alex 只有当没有的时候才往里面进行推送，不怎么用
+insert names before jack xiaohu   在jack前面插入xiaohu
+lset names 3 XIAOHU 重新赋值，下标是从0开始的
+lrem names alex 2 删除2个alex
+lpop names 删除最后一个赋值的，并且显示出来
+lindex names 3 获取下标为3的值
+ltrim names 2 5 只保留2-5，这一点与列表有点差别
+rpoplpush names names3 把names里面的数值pop出来然后放到names3里面
+blpop names 40 让names卡住40秒，有东西塞入就不卡了
+
+集合
+sadd name xiaohu alex xiaohu   这时候只能插入
+
+
+
+
