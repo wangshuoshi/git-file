@@ -17,3 +17,19 @@ bitcount name 获取name对应的值的二进制表示中1的个数
 这样用1个字段就可以完成大批量的任务，节省了空间内存还有查询时间
 incr name 1 设置为自增，从1开始 decr自减
 append name yyy 从原来的值上继续添加字符串
+
+哈希操作
+类似于一种嵌套字典
+hset info name alex   info是键对应一个字典，相当于是字典嵌套
+hset info age 22
+hget info name 获取info对应的name的值
+HKEYS info  获取info对应的字典的键，没有对应的值
+HVALUES info 获取info对应字典的所有值，不包括键
+hmget info name age   获取info对应的字典里面多个键的值
+hmset info name alex age 22 hobby football    同时设置多个值 info是第一个大的键
+HGETALL info 获取info下面的所有键值对
+hlen info 获取有多少个
+HEXIST info name  有的话返回是1，没有返回0
+hdel info name 指定的删除
+hincrby info age 自增
+HSCAN info a* 匹配出来所有a开头的键值对
