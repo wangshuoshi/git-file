@@ -373,3 +373,4 @@ for url in url_list:
     pool.submit(fetch_async, url)
 pool.shutdown(wait=True)
 
+协程，也是一种异步io 分为gevent+requests 和grequests（对前面的进行了封装）
