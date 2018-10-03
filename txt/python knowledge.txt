@@ -325,10 +325,9 @@ for url in url_list:
 pool.shutdown(wait=True)
 
 异步io，若是计算密集型的则不适合，反而会更慢   支持tcp但不支持http，若想支持http还需要引入一个aiohttp模块
-用asyncio
+1.   用asyncio
 import threading
 import asyncio
-
 @asyncio.coroutine  @asyncio.coroutine把一个generator标记为coroutine类型，然后，我们就把这个coroutine扔到EventLoop中执行
 def hello():
     print('Hello world! (%s)' % threading.currentThread())
@@ -338,6 +337,22 @@ loop = asyncio.get_event_loop()   #事件循环
 tasks = [hello(), hello()]
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
+2.  用aiohttp和asynic来实现http
+import aiohttp
+import asyncio
+@asyncio.coroutine
+def fetch_async(url):
+    print(url)
+    response = yield from aiohttp.request('GET', url)
+    # data = yield from response.read()
+    # print(url, data)
+    print(url, response)
+    response.close()
+tasks = [fetch_async('http://www.google.com/'), fetch_async('http://www.chouti.com/')]
+event_loop = asyncio.get_event_loop()
+results = event_loop.run_until_complete(asyncio.gather(*tasks))
+event_loop.close()
+
 
 线程池
 线程：是程序执行过程中的最小单元
