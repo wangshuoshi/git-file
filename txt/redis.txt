@@ -1,3 +1,4 @@
+redis一共有16个db，默认是在0db上，之间互不影响
 string操作
 ord("a")   求a的ASCII码  bin(666)求666的二进制码
 set name alex  设置键值
@@ -62,8 +63,10 @@ srandmember name 随机获取几个值
 zadd name 5 xiaohu 3 alex
 zrange name 0 -1会进行排序
 zrange name xiaohu 查看某一个排名
-
-
+zremrangebyrank name, min, max 按照排名来删除
+expire xiaohu 3 小虎会在3秒钟之后过期
+select 1 切换到1这个数据库上面，各数据库可以有重复，互不影响
+move alex 1 把name移动到1db上面，如果1之前有alex，那么就移动不了，防止覆盖
 
 
 
