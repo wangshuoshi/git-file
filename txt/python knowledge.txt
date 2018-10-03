@@ -312,7 +312,19 @@ def main():
 if __name__ == "__main__":
   main()
 
-异步io
+4.      类似下面说的线程池
+from concurrent.futures import ProcessPoolExecutor
+import requests
+def fetch_async(url):
+    response = requests.get(url)
+    return response
+url_list = ['http://www.github.com', 'http://www.bing.com']
+pool = ProcessPoolExecutor(5)
+for url in url_list:
+    pool.submit(fetch_async, url)
+pool.shutdown(wait=True)
+
+异步io，若是计算密集型的则不适合，反而会更慢   支持tcp但不支持http，若想支持http还需要引入一个aiohttp模块
 用asyncio
 import threading
 import asyncio
@@ -320,9 +332,9 @@ import asyncio
 @asyncio.coroutine  @asyncio.coroutine把一个generator标记为coroutine类型，然后，我们就把这个coroutine扔到EventLoop中执行
 def hello():
     print('Hello world! (%s)' % threading.currentThread())
-    yield from asyncio.sleep(1)
+    yield from asyncio.sleep(1)   #必须这样写，如果写成time.sleep就不会生效了，而且必须使用yield
     print('Hello again! (%s)' % threading.currentThread())
-loop = asyncio.get_event_loop()
+loop = asyncio.get_event_loop()   #事件循环
 tasks = [hello(), hello()]
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
@@ -335,3 +347,14 @@ GIL：对进程内的线程加上一把锁，cpu只允许一个线程进入
 线程的全局锁是不允许cpu去调度的，一次只有一个线程进入cpu，但是允许io，因为cpu只是点击一下，并不参与io的运作，
 所以全局锁对于io是多没多少影响的，多io的时候用多线程比较好，但是对于计算密集型的，cpu会参与操作，
 计算密集型的适合用多进程。进程的开销比较大，因为允许多个进程进入cpu
+from concurrent.futures import ThreadPoolExecutor
+import requests
+def fetch_async(url):
+    response = requests.get(url)
+    return response
+url_list = ['http://www.github.com', 'http://www.bing.com']
+pool = ThreadPoolExecutor(5)
+for url in url_list:
+    pool.submit(fetch_async, url)
+pool.shutdown(wait=True)
+
