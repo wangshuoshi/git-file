@@ -374,3 +374,44 @@ for url in url_list:
 pool.shutdown(wait=True)
 
 协程，也是一种异步io 分为gevent+requests 和grequests（对前面的进行了封装）
+1.    gevent+requests
+import gevent
+import requests
+from gevent import monkey
+monkey.patch_all()   进行监测，一旦阻塞直接切换
+def fetch_async(method, url, req_kwargs):
+    print(method, url, req_kwargs)
+    response = requests.request(method=method, url=url, **req_kwargs)
+    print(response.url, response.content)
+# ##### 发送请求 #####
+gevent.joinall([
+    gevent.spawn(fetch_async, method='get', url='https://www.python.org/', req_kwargs={}),
+    gevent.spawn(fetch_async, method='get', url='https://www.yahoo.com/', req_kwargs={}),
+    gevent.spawn(fetch_async, method='get', url='https://github.com/', req_kwargs={}),
+])
+# ##### 发送请求（协程池控制最大协程数量） #####
+# from gevent.pool import Pool
+# pool = Pool(None)
+# gevent.joinall([
+#     pool.spawn(fetch_async, method='get', url='https://www.python.org/', req_kwargs={}),
+#     pool.spawn(fetch_async, method='get', url='https://www.yahoo.com/', req_kwargs={}),
+#     pool.spawn(fetch_async, method='get', url='https://www.github.com/', req_kwargs={}),
+# ])
+
+2.  grequests
+import grequests
+request_list = [
+    grequests.get('http://httpbin.org/delay/1', timeout=0.001),
+    grequests.get('http://fakedomain/'),
+    grequests.get('http://httpbin.org/status/500')
+]
+# ##### 执行并获取响应列表 #####
+# response_list = grequests.map(request_list)
+# print(response_list)
+
+# ##### 执行并获取响应列表（处理异常） #####
+# def exception_handler(request, exception):
+# print(request,exception)
+#     print("Request failed")
+# response_list = grequests.map(request_list, exception_handler=exception_handler)
+# print(response_list)
