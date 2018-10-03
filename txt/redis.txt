@@ -1,5 +1,5 @@
 redis一共有16个db，默认是在0db上，之间互不影响，密码可以在设置里面设置，在linux里面通过redis-cli模式进入
-优化redis可以通过连接池和管道来进行操作，单线程，异步io
+优化redis可以通过连接池和管道来进行操作，单线程，异步io，朋友圈就是订阅发布
 string操作
 ord("a")   求a的ASCII码  bin(666)求666的二进制码
 set name alex  设置键值
