@@ -1,5 +1,6 @@
 redis一共有16个db，默认是在0db上，之间互不影响，密码可以在设置里面设置，在linux里面通过redis-cli模式进入
-优化redis可以通过连接池和管道来进行操作，单线程，异步io，朋友圈就是订阅发布
+优化redis可以通过连接池和管道来进行操作，单线程，异步io，朋友圈就是订阅发布，
+微博只有一份，并不是发布给所有粉丝，谁浏览谁就下载，看的都是本地保存的
 string操作
 ord("a")   求a的ASCII码  bin(666)求666的二进制码
 set name alex  设置键值
@@ -68,11 +69,3 @@ zremrangebyrank name, min, max 按照排名来删除
 expire xiaohu 3 小虎会在3秒钟之后过期
 select 1 切换到1这个数据库上面，各数据库可以有重复，互不影响
 move alex 1 把name移动到1db上面，如果1之前有alex，那么就移动不了，防止覆盖
-
-
-
-
-
-
-
-
