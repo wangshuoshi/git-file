@@ -326,3 +326,8 @@ loop = asyncio.get_event_loop()
 tasks = [hello(), hello()]
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
+
+线程池
+线程的全局锁是不允许cpu去调度的，一次只有一个线程进入cpu，但是允许io，因为cpu只是点击一下，并不参与io的运作，
+所以全局锁对于io是多没多少影响的，多io的时候用多线程比较好，但是对于计算密集型的，cpu会参与操作，
+计算密集型的适合用多进程。进程的开销比较大
