@@ -89,3 +89,5 @@ funthReturn(){
 }
 funthReturn
 echo "the result: $? "
+
+read相当于后期传入参数，而$1、$2、$3……是在运行脚本的时候就传入参数
