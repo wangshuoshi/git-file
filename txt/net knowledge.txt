@@ -281,12 +281,15 @@ POST方法用来创建资源，而PUT方法则用来更新资源
 9.服务器返回相应文件
   请求成功后，服务器会返回相应的HTML文件。接下来就到了页面的渲染阶段了。
 
+header请求行部分
+HTTP请求方式、Host说明请求的web服务器域名地址、协议版本User-AgentHTTP客户端运行的浏览器类型的详细信息
 header请求头部分
-HTTP请求方式、Host说明请求的web服务器域名地址、User-AgentHTTP客户端运行的浏览器类型的详细信息
 Accept指定客户端能够接收的内容类型，内容类型中的先后次序表示客户端接收的先后次序
 Accept-Language指定HTTP客户端浏览器用来展示返回信息所优先选择的语言、Accept-Encoding
 Content-Type显示此HTTP请求提交的内容类型。一般只有post提交时才需要设置该属性
 cookie会把保存在该请求域名下的所有cookie值一起发送给web服务器
+响应报文
+基本和上面请求头一样，还包括了状态码
 
 加速网页响应的办法：
 减少http请求、压缩组件、代理缓存、减少DNS查找、精简css和JavaScript
