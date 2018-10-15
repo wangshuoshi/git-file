@@ -194,3 +194,8 @@ feature 磁盘特性
 SES (SCSI Enclosure Service)协议决定了SES device必须是一个SCSI device，这是因为SES协议是通过
 SCSI Command "Send Diagnostics" 和 "receive diagnostics"传递协议中的page
 """
+
+目前来说，QEMU是一个独立的虚拟化解决方案，并不依赖KVM（它本身自己可以做CPU和内存的模拟，只不过效率较低），
+而KVM是另一套虚拟化解决方案，对CPU进行虚拟效率较高（采用了硬件辅助虚拟化），但本身不提供其他设备的虚拟化，
+借用了QEMU的代码进行了定制，所以KVM方案一定要依赖QEMU,即使后来RedHat后来开发了libvirt，也只能简单的认为
+是个虚拟机管理工具，仍然需要通过用户空间QEMU来与KVM进行交互。
