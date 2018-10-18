@@ -475,3 +475,13 @@ https://www.cnblogs.com/doublexi/p/8745792.html  深浅拷贝和赋值
 红黑树与B树的区别在于，B树的结点可以有许多子女，从几个到几千个。那为什么又说B树与红黑树很相似呢?
 因为与红黑树一样，一棵含n个结点的 B树的高度也为O（lgn） ，但可能比一棵红黑树的高度小许多，应为它的
 分支因子比较大。所以， B树可以在O（logn）时间内，实现各种如插入（insert），删除（delete）等动态集合操作
+
+python2和python3的区别
+print不一样
+编码不一样python2的时候没有utf8，也就是说：
+原: 字符串以8-bit字符串存储
+改为: 字符串以16-bit Unicode字符串存储
+Python3中input得到的为str；Python2的input的到的为int型，Python2的raw_input得到的为str类型
+/、//和%
+python3 3/2=1.5  3/2.0=1.5  3//2.0=1.0
+python2 3/2=1   3/2.0=1.5  3//2.0=1.0   加上小数点才会是真除
