@@ -13,3 +13,6 @@ qemu-img convert -f raw -O qcow2 test.raw test.raw.qcow2
 
 #qcow2是一种当下比较主流的虚拟化磁盘格式，具有占用空间小，支持加密，支持压缩，支持快照的特点
 #快照(能够创建基于之前镜像的新镜像, 速度更快)
+
+https://blog.csdn.net/CloudXli/article/details/78306546
+https://blog.csdn.net/5hongbing/article/details/78424265?locationNum=9&fps=1
