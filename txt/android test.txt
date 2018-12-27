@@ -13,7 +13,7 @@
 thistime可以作为启动的参考值
 
 获取cpu信息
-adb shell dumpsys cpuinfo|grep pacaagename    不要超过80%
+adb shell dumpsys cpuinfo|grep pacaagename    不要超过80% dumpsys是安卓自带的调试工具
 
 获取流量
 1、获取进程id
